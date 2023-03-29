@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: ID_8082
+        uri: http://localhost:8082/
+        predicates:
+        - Path=/8082/**
+        filters:
+        - RewritePath=/8082/(?<RID>.*), /$\{RID}
+      - id: ID_8081
+        uri: http://localhost:8081/
+        predicates:
+        - Path=/8081/**
+        filters:
+        - RewritePath=/8081/(?<RID>.*), /$\{RID}
+  config:
+    import: "optional:configserver:"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

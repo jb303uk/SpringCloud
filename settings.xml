@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>${env.SERVER_USERNAME}</username>
+      <password>${env.SERVER_PASSWORD}</password>
+      <id>${env.SERVER_ID}</id>
+    </server>
+  </servers>
+<profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>jb303</id>
+          <name>default-maven-virtual</name>
+          <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>jb303</id>
+          <name>default-maven-virtual</name>
+          <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>jb303</id>
+          <name>default-maven-virtual</name>
+          <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>jb303</id>
+          <name>default-maven-virtual</name>
+          <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>jb303</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>jb303</activeProfile>
+  </activeProfiles>
+</settings>
