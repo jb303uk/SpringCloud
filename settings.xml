@@ -5,7 +5,18 @@
     <server>
       <username>${env.SERVER_USERNAME}</username>
       <password>${env.SERVER_PASSWORD}</password>
-      <id>${env.SERVER_ID}</id>
+      <id>docker-virtual</id>
+    </server>
+    <server>
+      <id>jb303</id>
+      <configuration>
+        <httpHeaders>
+          <property>
+            <name>Authorization</name>
+            <value>Bearer ${env.SERVER_PASSWORD}</value>
+          </property>
+        </httpHeaders>
+      </configuration>
     </server>
   </servers>
 <profiles>

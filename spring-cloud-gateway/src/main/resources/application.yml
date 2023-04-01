@@ -16,9 +16,6 @@ spring:
         - RewritePath=/8081/(?<RID>.*), /$\{RID}
   config:
     import: "optional:configserver:"
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+  main:
+    web-application-type: reactive
 

@@ -1,6 +1,6 @@
 ---
 server:
-  port: 8084
+  port: 0
 spring:
   application:
     name: "Spring Boot Template Web App"
@@ -12,9 +12,10 @@ spring:
     driverClassName: org.h2.Driver
   liquibase:
     enabled: true
+  config:
+    import: "optional:configserver:"
 management:
   endpoints:
     web:
-      base-path: "/manage"
       exposure:
         include: "*"
