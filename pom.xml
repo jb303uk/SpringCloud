@@ -22,6 +22,7 @@
 		<module>spring-cloud-gateway</module>
 		<module>spring-cloud-template</module>
 		<module>spring-cloud-config-server</module>
+		<module>spring-cloud-service-registry</module>
 	</modules>
 	<dependencies>
 		<dependency>
@@ -45,6 +46,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+	    <dependency>
+	      <groupId>org.springframework.cloud</groupId>
+	      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+	    </dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

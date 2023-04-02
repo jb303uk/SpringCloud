@@ -1,14 +1,21 @@
-server:
-  port: 8888
 management:
   endpoints:
     web:
       exposure:
         include: "*"
 spring:
+  application:
+    name: configserver
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/config-repo
           order: 1
+      discovery:
+        enabled: true
+        service-id: spring-cloud-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
