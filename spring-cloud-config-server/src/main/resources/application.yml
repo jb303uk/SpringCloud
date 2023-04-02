@@ -5,3 +5,10 @@ management:
     web:
       exposure:
         include: "*"
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config-repo
+          order: 1
