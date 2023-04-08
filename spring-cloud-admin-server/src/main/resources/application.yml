@@ -1,0 +1,11 @@
+server:
+  port: 0
+spring:
+  application:
+    name: "@project.artifactId@"
+  config:
+    import: "optional:configserver:"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}

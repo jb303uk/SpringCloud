@@ -3,7 +3,7 @@ server:
   port: 0
 spring:
   application:
-    name: "Spring Boot Template Web App"
+    name: "@project.artifactId@"
   h2:
     console:
       enabled: true
@@ -19,11 +19,6 @@ spring:
       discovery:
         service-id: configserver
         enabled: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 eureka:
   client:
     serviceUrl:
@@ -31,3 +26,4 @@ eureka:
     registerWithEureka: true
   instance:
     prefer-ip-address: false
+    instance-id: "@project.artifactId@:${random.int[1,9]}"

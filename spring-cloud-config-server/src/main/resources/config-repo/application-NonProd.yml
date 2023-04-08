@@ -6,3 +6,12 @@ management:
   endpoint:
     health:
       show-details: always
+    env:
+      show-values: always
+  info:
+    java:
+      enabled: true
+    git:
+      enabled: true
+    env:
+      enabled: true
