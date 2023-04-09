@@ -1,31 +1,20 @@
 server:
-  port: 0
+  port: 8080
 spring:
   application:
     name: "@project.artifactId@"
-  cloud:
-    gateway:
-      routes:
-      - id: ID_8082
-        uri: http://localhost:8082/
-        predicates:
-        - Path=/8082/**
-        filters:
-        - RewritePath=/8082/(?<RID>.*), /$\{RID}
-      - id: ID_8081
-        uri: http://localhost:8081/
-        predicates:
-        - Path=/8081/**
-        filters:
-        - RewritePath=/8081/(?<RID>.*), /$\{RID}
   config:
     import: "optional:configserver:"
   main:
     web-application-type: reactive
+  cloud:
+    config:
+      discovery:
+        service-id: configserver
+        enabled: true
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-    registerWithEureka: true
   instance:
-    prefer-ip-address: false
+    instance-id: "@project.artifactId@:${random.int[1,9]}"

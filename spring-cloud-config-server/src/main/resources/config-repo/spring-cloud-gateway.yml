@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: spring-cloud-template
+        uri: lb://spring-cloud-template
+        predicates:
+        - Path=/spring-cloud-template/**
+        filters:
+        - StripPrefix=1
+      - id: ID_8081
+        uri: http://localhost:8081/
+        predicates:
+        - Path=/8081/**
+        filters:
+        - RewritePath=/8081/(?<RID>.*), /$\{RID}

@@ -1,10 +1,5 @@
 server:
   port: 0
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 spring:
   application:
     name: configserver
@@ -16,8 +11,10 @@ spring:
           order: 1
       discovery:
         enabled: true
-        service-id: spring-cloud-config-server
+        service-id: "@project.artifactId@"
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    instance-id: "@project.artifactId@:${random.int[1,9]}"
