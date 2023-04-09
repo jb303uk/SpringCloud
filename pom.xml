@@ -96,6 +96,9 @@
 		<plugin>
 			<groupId>io.github.git-commit-id</groupId>
 			<artifactId>git-commit-id-maven-plugin</artifactId>
+	        <configuration>
+ 				<verbose>false</verbose>
+	        </configuration>
 		</plugin>
 		</plugins>
 	</build>
