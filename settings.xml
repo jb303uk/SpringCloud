@@ -5,7 +5,7 @@
     <server>
       <username>${env.SERVER_USERNAME}</username>
       <password>${env.SERVER_PASSWORD}</password>
-      <id>docker-virtual</id>
+      <id>${env.SERVER_ID}</id>
     </server>
     <server>
       <id>jb303</id>
