@@ -99,7 +99,7 @@
 			<version>3.1.4</version>
 			<configuration>
 			<from>
-			<image>${env.SERVER_ID}${env.SERVER_FOLDER}library/eclipse-temurin:17.0.6_10-jre-alpine</image>
+			<image>eclipse-temurin:17.0.6_10-jre-alpine</image>
 			</from>
 			<to>
 			<image>${env.SERVER_ID}${env.SERVER_FOLDER}${project.artifactId}:${project.version}</image>
@@ -112,12 +112,12 @@
     <repository>
         <id>jb303</id>
         <name>releases</name>
-        <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+        <url>https://maven.pkg.github.com/jb303uk/SpringCloud</url>
     </repository>
     <snapshotRepository>
         <id>jb303</id>
         <name>snapshots</name>
-        <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+        <url>https://maven.pkg.github.com/jb303uk/SpringCloud</url>
     </snapshotRepository>
 </distributionManagement>
 
