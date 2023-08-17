@@ -112,12 +112,12 @@
     <repository>
         <id>jb303</id>
         <name>releases</name>
-        <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+        <url>https://maven.pkg.github.com/jb303uk/SpringCloud</url>
     </repository>
     <snapshotRepository>
         <id>jb303</id>
         <name>snapshots</name>
-        <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+        <url>https://maven.pkg.github.com/jb303uk/SpringCloud</url>
     </snapshotRepository>
 </distributionManagement>
 

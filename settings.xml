@@ -7,29 +7,22 @@
       <password>${env.SERVER_PASSWORD}</password>
       <id>${env.SERVER_ID}</id>
     </server>
-    <server>
-      <id>jb303</id>
-      <configuration>
-        <httpHeaders>
-          <property>
-            <name>Authorization</name>
-            <value>Bearer ${env.SERVER_PASSWORD}</value>
-          </property>
-        </httpHeaders>
-      </configuration>
-    </server>
   </servers>
 <profiles>
     <profile>
 	<id>jb303</id>
       <repositories>
         <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
           <id>jb303</id>
           <name>default-maven-virtual</name>
-          <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+          <url>https://maven.pkg.github.com/jb303uk/SpringCloud</url>
         </repository>
       </repositories>
       <pluginRepositories>
@@ -39,7 +32,7 @@
           </snapshots>
           <id>jb303</id>
           <name>default-maven-virtual</name>
-          <url>https://jb303.jfrog.io/artifactory/default-maven-virtual</url>
+          <url>https://maven.pkg.github.com/jb303uk/SpringCloud</url>
         </pluginRepository>
       </pluginRepositories>      
     </profile>
