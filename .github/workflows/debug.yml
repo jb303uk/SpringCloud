@@ -13,7 +13,8 @@ jobs:
       contents: read
       packages: write
     env: 
-      MY_ENV: "jb"
+      MAVEN_CLI_OPTS: "-DinstallAtEnd=true -DdeployAtEnd=true -Dstyle.color=always --no-transfer-progress --batch-mode --errors --fail-at-end --settings=settings.xml --global-settings=settings.xml"
+      MAVEN_OPTS: "-Djansi.force=false"
 
     steps:
     - uses: actions/checkout@v3
@@ -25,12 +26,36 @@ jobs:
         cache: 'maven'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-
-    - name: Debug Environment Variable
-      run: echo "MY_ENV:${MY_ENV}"
-
+       
+    - name: create new multiline file
+      run: |
+        cat > ./settings-multiline.xml << EOF
+        <?xml version="1.0" encoding="UTF-8"?>
+        <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+            <localRepository>\${env.M2_REPO}</localRepository>
+            <mirrors>
+                <mirror>
+                    <id>central</id>
+                    <url>\${env.MAVEN_CENTRAL_URL}</url>
+                    <mirrorOf>central</mirrorOf>
+                </mirror>
+            </mirrors>
+        </settings>
+        EOF
+        
     - name: Debug All Environment Variable
       run: export
-      
+
+    - name: cat settings-multiline.xml
+      run: cat settings-multiline.xml
+
+    - name: Debug Environment Variable
+      run: |
+        echo "MAVEN_CLI_OPTS:${MAVEN_CLI_OPTS}"
+        echo "MAVEN_OPTS:${MAVEN_OPTS}"
+        mvn ${MAVEN_CLI_OPTS} help:effective-settings
+        
     - name: Build with Maven
-      run: mvn -B package
+      run: mvn ${MAVEN_CLI_OPTS} package
