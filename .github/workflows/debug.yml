@@ -4,7 +4,7 @@
 name: Maven Debug
 
 on: [push, pull_request]
-
+        
 jobs:
   build:
 
@@ -12,6 +12,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env: 
+      MY_ENV: "jb"
 
     steps:
     - uses: actions/checkout@v3
@@ -20,8 +22,15 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+        cache: 'maven'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+    - name: Debug Environment Variable
+      run: echo "MY_ENV:${MY_ENV}"
+
+    - name: Debug All Environment Variable
+      run: export
+      
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package
