@@ -17,7 +17,7 @@ jobs:
       MAVEN_OPTS: "-Djansi.force=false"
       MAVEN_CENTRAL_URL: "https://repo1.maven.org/maven2"
       SERVER_ID: "ghcr.io"
-      SERVER_USERNAME: ${GITHUB_TRIGGERING_ACTOR}
+      SERVER_USERNAME: "${GITHUB_TRIGGERING_ACTOR}"
       SERVER_PASSWORD: ${{ secrets.GITLAB_MAVEN_CREDENTIALS_PSW }}
 
     steps:
