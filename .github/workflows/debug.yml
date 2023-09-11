@@ -56,7 +56,7 @@ jobs:
                       <configuration>
                         <httpHeaders>
                           <property>
-                            <name>Authorization/name>
+                            <name>Authorization</name>
                             <value>token \${env.GITLAB_MAVEN_CREDENTIALS_PSW}</value>
                           </property>
                         </httpHeaders>
