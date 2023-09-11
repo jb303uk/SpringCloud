@@ -45,6 +45,7 @@ jobs:
                     <url>\${env.MAVEN_CENTRAL_URL}</url>
                     <mirrorOf>central</mirrorOf>
                 </mirror>
+            </mirrors>
                   <servers>
                     <server>
                       <id>\${env.SERVER_ID}</id>
