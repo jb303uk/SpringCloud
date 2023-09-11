@@ -15,6 +15,10 @@ jobs:
     env: 
       MAVEN_CLI_OPTS: "-DinstallAtEnd=true -DdeployAtEnd=true -Dstyle.color=always --no-transfer-progress --batch-mode --errors --fail-at-end --settings=settings.xml --global-settings=settings.xml"
       MAVEN_OPTS: "-Djansi.force=false"
+      MAVEN_CENTRAL_URL: "https://repo1.maven.org/maven2"
+      SERVER_ID: "ghcr.io"
+      SERVER_USERNAME: "${env.GITHUB_TRIGGERING_ACTOR}"
+      SERVER_PASSWORD: "${secret.GITLAB_MAVEN_CREDENTIALS_PSW}"
 
     steps:
     - uses: actions/checkout@v3
@@ -24,12 +28,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: 'maven'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        server-id: ghcr.io # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
        
     - name: create new multiline file
       run: |
-        cat > ./settings-multiline.xml << EOF
+        cat > ./settings.xml << EOF
         <?xml version="1.0" encoding="UTF-8"?>
         <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -41,21 +45,32 @@ jobs:
                     <url>\${env.MAVEN_CENTRAL_URL}</url>
                     <mirrorOf>central</mirrorOf>
                 </mirror>
-            </mirrors>
+                  <servers>
+                    <server>
+                      <id>\${env.SERVER_ID}</id>
+                      <username>\${env.SERVER_USERNAME}</username>
+                      <password>\${env.SERVER_PASSWORD}</password>                      
+                    </server>
+                    <server>
+                      <id>gitlab-maven-private</id>
+                      <configuration>
+                        <httpHeaders>
+                          <property>
+                            <name>Private-Token</name>
+                            <value>\${env.GITLAB_MAVEN_CREDENTIALS_PSW}</value>
+                          </property>
+                        </httpHeaders>
+                      </configuration>
+                    </server>
+                  </servers>
         </settings>
         EOF
         
     - name: Debug All Environment Variable
       run: export
 
-    - name: cat settings-multiline.xml
-      run: cat settings-multiline.xml
-
     - name: Debug Environment Variable
-      run: |
-        echo "MAVEN_CLI_OPTS:${MAVEN_CLI_OPTS}"
-        echo "MAVEN_OPTS:${MAVEN_OPTS}"
-        mvn ${MAVEN_CLI_OPTS} help:effective-settings
+      run: mvn ${MAVEN_CLI_OPTS} help:effective-settings
         
     - name: Build with Maven
-      run: mvn ${MAVEN_CLI_OPTS} package
+      run: mvn ${MAVEN_CLI_OPTS} deploy
