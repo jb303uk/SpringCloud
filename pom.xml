@@ -110,12 +110,12 @@
 	</build>
 <distributionManagement>
     <repository>
-        <id>ghcr.io</id>
+        <id>gitlab-maven-private</id>
         <name>releases</name>
         <url>https://maven.pkg.github.com/jb303uk/SpringCloud</url>
     </repository>
     <snapshotRepository>
-        <id>ghcr.io</id>
+        <id>gitlab-maven-private</id>
         <name>snapshots</name>
         <url>https://maven.pkg.github.com/jb303uk/SpringCloud</url>
     </snapshotRepository>
