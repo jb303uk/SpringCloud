@@ -1,0 +1,15 @@
+package uk.gov.hmrc.springcloudadmin;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
+
+@SpringBootApplication
+@EnableAdminServer
+public class SpringCloudAdminApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringCloudAdminApplication.class, args);
+	}
+
+}

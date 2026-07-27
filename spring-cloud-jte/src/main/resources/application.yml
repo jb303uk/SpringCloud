@@ -1,0 +1,36 @@
+---
+server:
+  port: 0
+spring:
+  application:
+    name: "@project.artifactId@"
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    generate-unique-name: false
+    name: jb303
+  inetutils:
+    ignoredInterfaces:
+      - docker0
+      - veth.*
+      - eth0
+  config:
+    import: "optional:configserver:"
+  cloud:
+    discovery:
+      enabled: false
+    config:
+      failFast: false
+      discovery:
+        service-id: spring-cloud-liquibase
+        enabled: false
+eureka:
+  instance:
+    hostname: ${HOSTNAME}.columbus.local
+    instanceId: "@project.artifactId@:${random.int[1,9]}"
+gg:
+  jte:
+    development-mode: true

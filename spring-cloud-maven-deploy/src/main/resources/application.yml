@@ -1,0 +1,25 @@
+---
+server:
+  port: 0
+spring:
+  application:
+    name: "@project.artifactId@"
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    generate-unique-name: false
+    name: jb303
+  inetutils:
+    ignoredInterfaces:
+      - docker0
+      - veth.*
+      - eth0
+  config:
+    import: "optional:configserver:"
+eureka:
+  instance:
+    hostname: ${HOSTNAME}.columbus.local
+    instanceId: "@project.artifactId@:${random.int[1,9]}"

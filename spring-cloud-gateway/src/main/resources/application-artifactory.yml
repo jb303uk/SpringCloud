@@ -1,0 +1,17 @@
+---
+spring:
+  cloud:
+    gateway:      
+      routes:
+      - id: artifactory-router
+        uri: https://artifactory.alm.corp.hmrc.gov.uk:443
+        predicates:
+          - Path=/router/**
+        filters:
+        - RewritePath=/(?<segment>.*), /$\{segment}
+      - id: artifactory-service
+        uri: https://artifactory.alm.corp.hmrc.gov.uk:443
+        predicates:
+          - Path=/artifactory/**
+        filters:
+        - RewritePath=/(?<segment>.*), /$\{segment}

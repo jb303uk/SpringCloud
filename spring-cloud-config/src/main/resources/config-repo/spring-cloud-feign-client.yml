@@ -1,0 +1,14 @@
+---
+app:
+  feign:
+    config:
+      name: "spring-cloud-maven-deploy"
+---
+spring:
+  config:
+    activate:
+      on-cloud-platform: kubernetes
+app:
+  feign:
+    config:
+      name: "spring-cloud-maven-deploy"

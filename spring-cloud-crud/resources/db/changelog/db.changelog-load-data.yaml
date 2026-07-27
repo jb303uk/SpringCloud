@@ -1,0 +1,204 @@
+databaseChangeLog:
+  - changeSet:
+      id: loadData-REGIONS
+      author: James Beardsley
+      changes:
+        - loadUpdateData:
+            columns:
+              - column:
+                  name: REGION_ID
+                  type: NUMERIC
+              - column:
+                  name: REGION_NAME
+                  type: STRING
+            commentLineStartsWith: //
+            file: data/REGIONS.csv
+            quotchar: '"'
+            relativeToChangelogFile: true
+            separator: ","
+            tableName: REGIONS
+            usePreparedStatements: true
+            primaryKey: REGION_ID
+  - changeSet:
+      id: loadData-LOCATIONS
+      author: James Beardsley
+      changes:
+        - loadUpdateData:
+            columns:
+              - column:
+                  name: LOCATION_ID
+                  type: NUMERIC
+              - column:
+                  name: STREET_ADDRESS
+                  type: STRING
+              - column:
+                  name: POSTAL_CODE
+                  type: STRING
+              - column:
+                  name: CITY
+                  type: STRING
+              - column:
+                  name: STATE_PROVINCE
+                  type: STRING
+              - column:
+                  name: COUNTRY_ID
+                  type: STRING                                                    
+            commentLineStartsWith: //
+            file: data/LOCATIONS.csv
+            quotchar: '"'
+            relativeToChangelogFile: true
+            separator: ","
+            tableName: LOCATIONS
+            usePreparedStatements: true
+            primaryKey: LOCATION_ID
+  - changeSet:
+      id: loadData-COUNTRIES
+      author: James Beardsley
+      changes:
+        - loadUpdateData:
+            columns:
+              - column:
+                  name: COUNTRY_ID
+                  type: STRING
+              - column:
+                  name: COUNTRY_NAME
+                  type: STRING
+              - column:
+                  name: REGION_ID
+                  type: NUMERIC                                                
+            commentLineStartsWith: //
+            file: data/COUNTRIES.csv
+            quotchar: '"'
+            relativeToChangelogFile: true
+            separator: ","
+            tableName: COUNTRIES
+            usePreparedStatements: true
+            primaryKey: COUNTRY_ID
+  - changeSet:
+      id: loadData-DEPARTMENTS
+      author: James Beardsley
+      changes:
+        - loadUpdateData:
+            columns:
+              - column:
+                  name: DEPARTMENT_ID
+                  type: NUMERIC
+              - column:
+                  name: DEPARTMENT_NAME
+                  type: STRING
+              - column:
+                  name: MANAGER_ID
+                  type: NUMERIC   
+              - column:
+                  name: LOCATION_ID
+                  type: NUMERIC                                               
+            commentLineStartsWith: //
+            file: data/DEPARTMENTS.csv
+            quotchar: '"'
+            relativeToChangelogFile: true
+            separator: ","
+            tableName: DEPARTMENTS
+            usePreparedStatements: true
+            primaryKey: DEPARTMENT_ID
+  - changeSet:
+      id: loadData-JOBS
+      author: James Beardsley
+      changes:
+        - loadUpdateData:
+            columns:
+              - column:
+                  name: JOB_ID
+                  type: STRING
+              - column:
+                  name: JOB_TITLE
+                  type: STRING
+              - column:
+                  name: MIN_SALARY
+                  type: NUMERIC   
+              - column:
+                  name: MAX_SALARY
+                  type: NUMERIC                                               
+            commentLineStartsWith: //
+            file: data/JOBS.csv
+            quotchar: '"'
+            relativeToChangelogFile: true
+            separator: ","
+            tableName: JOBS
+            usePreparedStatements: true
+            primaryKey: JOB_ID
+  - changeSet:
+      id: loadData-EMPLOYEES
+      author: James Beardsley
+      changes:
+        - loadUpdateData:
+            columns:
+              - column:
+                  name: EMPLOYEE_ID
+                  type: NUMERIC
+              - column:
+                  name: FIRST_NAME
+                  type: STRING
+              - column:
+                  name: LAST_NAME
+                  type: STRING   
+              - column:
+                  name: EMAIL
+                  type: STRING     
+              - column:
+                  name: PHONE_NUMBER
+                  type: STRING  
+              - column:
+                  name: HIRE_DATE
+                  type: DATE  
+              - column:
+                  name: JOB_ID
+                  type: STRING  
+              - column:
+                  name: SALARY
+                  type: NUMERIC  
+              - column:
+                  name: COMMISSION_PCT
+                  type: NUMERIC  
+              - column:
+                  name: MANAGER_ID
+                  type: NUMERIC  
+              - column:
+                  name: DEPARTMENT_ID
+                  type: NUMERIC                                            
+            commentLineStartsWith: //
+            file: data/EMPLOYEES.csv
+            quotchar: '"'
+            relativeToChangelogFile: true
+            separator: ","
+            tableName: EMPLOYEES
+            usePreparedStatements: true
+            primaryKey: EMPLOYEE_ID
+  - changeSet:
+      id: loadData-JOB_HISTORY
+      author: James Beardsley
+      changes:
+        - loadUpdateData:
+            columns:
+              - column:
+                  name: EMPLOYEE_ID
+                  type: NUMERIC  
+              - column:
+                  name: START_DATE
+                  type: DATE
+              - column:
+                  name: END_DATE
+                  type: DATE  
+              - column:
+                  name: JOB_ID
+                  type: STRING  
+              - column:
+                  name: DEPARTMENT_ID
+                  type: NUMERIC                                            
+            commentLineStartsWith: //
+            file: data/JOB_HISTORY.csv
+            quotchar: '"'
+            relativeToChangelogFile: true
+            separator: ","
+            tableName: JOB_HISTORY
+            usePreparedStatements: true
+            primaryKey: EMPLOYEE_ID

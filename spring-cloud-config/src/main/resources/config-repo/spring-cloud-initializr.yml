@@ -1,0 +1,60 @@
+initializr:
+  groupId:
+    value: uk.gov.hmrc
+  artifactId:
+    value: spring-cloud-app
+  name:
+    value: spring-cloud-app
+  packageName:
+    value: uk.gov.hmrc  
+  description:
+    value: A sample Spring Cloud Application
+  javaVersions:
+    - id: 1.8
+      default: false
+    - id: 11
+      default: false
+    - id: 17
+      default: true
+  languages:
+    - name: Java
+      id: java
+      default: true
+  packagings:
+    - name: Jar
+      id: jar
+      default: true
+    - name: War
+      id: war
+      default: false
+  bootVersions:
+  - name : 2.7.9
+    id: 2.7.9
+    default: false
+  - name : 3.0.4
+    id: 3.0.4
+    default: true
+  types:
+    - name: Maven Project
+      id: maven-project
+      description: Generate a Maven based project archive
+      tags:
+        build: maven
+        format: project
+      default: true
+      action: /starter.zip
+  dependencies:
+    - name: spring-cloud-parent
+      content:
+        - name: spring-cloud-parent #name visible to end user
+          id: spring-cloud-parent #same as artifactId
+          groupId: uk.gov.hmrc
+          artifactId: spring-cloud-parent
+          version: 0.0.1-SNAPSHOT
+          description: Dependency description
+          packaging: pom
+    - name: Web
+      content:
+        - name: Web
+          id: web
+          description: Full-stack web development with Tomcat and Spring MVC

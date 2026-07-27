@@ -1,0 +1,49 @@
+---
+sourceOfConfig: application-local.yml
+imos:
+  docker_hostname: a-41dwpq8s1hdh.columbus.local
+  app_hostname: a-1qkrat9vql5lo.columbus.local
+  imos-data-service:
+    port: 8082
+  imos-message-scheduler:
+    port: 8084
+  imos-receiver:
+    port: 8088
+  imos-orchestrator:
+    port: 8092
+  imos-eis-mocker:
+    port: 8300  
+  spring-cloud-config:
+    port: 8888  
+  spring-cloud-admin:
+    port: 8022  
+  rabbitMQ-GUI:
+    port: 15672  
+database:
+  host: ${imos.docker_hostname}
+  port: 3306
+  useSsl: false
+spring:
+  datasource: 
+     url: jdbc:mysql://${database.host}:${database.port}/imosdb?usePipelineAuth=false&useBatchMultiSend=false&useSSL=${database.useSsl}&requireSSL=${database.useSsl}&verifyServerCertificate=${database.useSsl}&trustCertificateKeyStoreUrl=${database.trustStoreUrl}&trustCertificateKeyStoreType=${database.trustStoreType}&trustCertificateKeyStorePassword=${database.trustStorePwd}&disableSslHostnameVerification=true&createDatabaseIfNotExist=true
+     username: root
+     password: root
+  rabbitmq:
+    host: ${imos.docker_hostname}
+    port: 5672
+    username: guest
+    password: guest    
+scheduler:
+  process:
+    waiting:
+      initialDelay: 20000
+      fixedRate: 500000
+queueName: ico02
+data:
+  store:
+    service:
+      host: ${imos.docker_hostname}
+      port: ${imos.imos-data-service.port}
+eis:
+  host: ${imos.docker_hostname}
+  port: ${imos.imos-eis-mocker.port}

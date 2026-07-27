@@ -1,0 +1,6 @@
+tennant:
+  emcs:
+    schema: emcs_timer
+spring:
+  datasource:
+    url: jdbc:mysql://${tennant.emcs.db_host}:${tennant.emcs.db_port}/${tennant.emcs.schema}?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true

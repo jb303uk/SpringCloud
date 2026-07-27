@@ -1,0 +1,10 @@
+default:  
+  tags:
+    - nonprod-k8s
+variables:
+  KUBERNETES_MEMORY_LIMIT: "1000Mi"
+  KUBERNETES_CPU_LIMIT: "1000m"
+include:
+  - project: U.8005014/gitlab-common
+    ref: feature/8005014_debug_Rebased
+    file: '/templates/gitlab/maven-GitFlow-docker.yml'

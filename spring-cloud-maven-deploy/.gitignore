@@ -1,0 +1,9 @@
+repository
+**/target
+.settings
+**/.settings/*
+.idea/*
+*.iml
+**/generated
+.classpath
+.project

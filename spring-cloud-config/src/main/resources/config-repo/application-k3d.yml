@@ -1,0 +1,28 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: default
+    password: default
+    virtual-host: default
+  datasource:
+    name: emcs
+    url: jdbc:mysql://${tennant.emcs.db_host}:${tennant.emcs.db_port}/${tennant.emcs.schema:emcs}?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root	
+    password: default
+    maximum-pool-size: 2
+  cache:
+    type: redis
+  redis:
+    host: redis-redis-stack
+    port: 6379
+  boot:
+    admin:
+      ui:
+        public-url: "http://a-1qkrat9vql5lo.columbus.local:8080/default/spring-cloud-admin/"
+tennant:
+  emcs:
+    db_host: mysql
+    db_port: 3306
+    schema: default

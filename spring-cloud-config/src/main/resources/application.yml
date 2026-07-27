@@ -1,0 +1,58 @@
+---
+spring:
+  application:
+    name: "@project.artifactId@"
+  cloud:
+    config:
+      server:
+        vault:
+          host: localhost
+          port: 8200
+          order: 1
+          kvVersion: 2
+          skipSslValidation: true
+          scheme: https
+          backend: secret
+          token: s.ItqoUcohzofHGSrKZvmCbhiN
+          #namespace: hmrcnp/cit/
+        native:
+          search-locations: classpath:/config-repo
+          order: 2
+        git:
+          uri: git@gitlab.alm.corp.hmrc.gov.uk:U.8005014/config-repo.git
+          defaultLabel: master
+          order: 3
+          ignoreLocalSshSettings: true
+          hostKeyAlgorithm: ecdsa-sha2-nistp256
+          strictHostKeyChecking: true
+          force-pull: true
+          deleteUntrackedBranches: true
+          host-key: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBU3GaPp7ed/uyr2uk1KytJUQv3LOHqvrxzMCzkQ2uIdfX14plVwZ3u7uJOH4FMh6h5wOnIlwTUp36/d4Nnmy4s=
+          privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            MIIEpQIBAAKCAQEA6BD03AfQBoTX/TFb9akUhJ4aolHkPkIxdcvuDhnloBh8PscZ
+            AgqpZ7MGc6FS3EXD8LR9oZbSdkxOFrEuKoOVdqX3aRDRf3iZGOhygFd9F867uN7j
+            /K3poo7ozu7CGCpRrtYJaR7S+NctpeP0Zb713DiY9sTFci57r52T6Cl6BRatRt3z
+            URaXW/Abee9jtcgwNJr9LMJUEpHJyE2c8YNjD+eW//V/zEucJtWDCAzxYtHA3tDN
+            Gpyy8P1ZB9SRb/9BwKpAKv8wO862WBWbhRenRJgcte+sVLmRO1NPmPbmus1ZcR+8
+            AQ66yE9tRDbYXBLLdQ1mjeWjU7lpfT/fcfr9rwIDAQABAoIBAQCQGOdSMO+0/Iv5
+            RcrqMYDyEBJNtDfbiNKZaHV7AA2baVjMymf24pPqNjnNVuDSsedG8WwJCFPK7PqY
+            EJCwCWCnecq0zKKpWkMGOl/O3YRpYg8ibhR2865dKAvbYlnXE4AA5hqV0XQC2+oW
+            VgONohOcGPCyWeCYU9CtbVVIFWkU+p8POewqu03aq12C3D69I/cIgmFTGQc/TnEs
+            bH6+qng8S50QjX5XQ3HmIeSdDjpBmrD4YjHLHMALGdItpDFxPPLYmlfNBfTqDtlG
+            RqG5LPkPcUZiF9542+nhwrp822XAkdUF8bOLT2apds9xWos8/vKtRSbDSQuq7+eb
+            b0Ou41UhAoGBAPRiydwtDjYvb1I4O87FbYXoZl+WZ4OhamAqx1xKFDEuQvxZTYwh
+            q414RhqdU3yw0m4iYrR1YfVfwSoDYHLVr1SEt4bTta29u+Nlh1MzvMG1khKfJnDC
+            utjtPOvUEeJULhVlqTJBdbaFCGb6+tQGLupzaA7ipmF/BK9pFMBnh36JAoGBAPMY
+            SVCY6FSN90RXke2hlpc++SfM+D84yjRJ4iEhKtUv6iwh2kXlUfsE8o9DY4O4Cw7t
+            LUYyEM+cRSV4pLDRgXXZY12Pt7abFqP11xfEJWxH71FkvaD5agmI2k99cZ0rDOSN
+            EAnCzNQLVHTD1+AaY9yzvbNPtCxHTYc9gaa1Wsx3AoGBANCno/fD1DV5TI+jiZTi
+            Rb+mC/oi/WCKqbtP6wUmDpVrDTBNwwMZIFLaVOiWWNjGU/RKkYHIEwogZllLpsaF
+            IXyFD/kiuySLMWdWoTLtooS1VPFnRrfR2xwpefFUEKzv+KS2Nr682xcqAGGEejIa
+            0WXFgRvscegePc7SZjBcdHgZAoGAabT73HJBRNNe3Hb/28dSRn55tZbptAQr2UTv
+            cdyMVZu6RmqKEa7AUVk7aJSzJ0nWdS0pbMbEjKK1Zq/pXYIcu3RGQx8FkgAqfi2e
+            1JTUeRtms4wM8XzDYVYDKGGyD9fyiUfV24i7rNEoboXiz25qUkROjzRvcnmm+tIC
+            GM3vp80CgYEAgXHy+J4/JmRVUJlNuucUFt1EJdVWNQOZ/O0dliKheTMdvQr05JdK
+            onV4ketIOSI9M75rLwYOmJi+6/QRalXS17g6fZWsWcfPvRG2sUbqwMT6GE7daC5r
+            GRv5dMD2dlLUJuQSJ9f3eJO5UGgaD/9RMQ0dcDlxgV2S+XJX5w8Bow4=
+            -----END RSA PRIVATE KEY-----

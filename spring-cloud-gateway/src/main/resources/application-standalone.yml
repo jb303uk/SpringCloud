@@ -1,0 +1,29 @@
+---
+server:
+  port: 8083
+  ssl:
+    key-store: classpath:ssl/HMRC-keyStore.p12
+    key-store-password: changeit
+spring:
+  config:
+    import: "optional:configserver:"
+  application:
+    name: "@project.artifactId@"
+  cloud:
+    discovery:
+      enabled: false
+    config:
+      failFast: false
+      discovery:
+        service-id: spring-cloud-config
+        enabled: false
+  main:
+    web-application-type: reactive
+management:
+  endpoint:
+    gateway:
+      access: unrestricted
+  endpoints:
+    web:
+      exposure:
+        include: "*"

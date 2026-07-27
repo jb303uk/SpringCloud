@@ -1,0 +1,16 @@
+<html>
+<head></head>
+<body>
+<h1>Environment Details: local D4D Environment</h1>
+<a href="http://${imos.app_hostname}:${imos.imos-data-service.port}/actuator/health">imos-data-service (/actuator/health)</a><br />
+<a href="http://${imos.app_hostname}:${imos.imos-message-scheduler.port}/actuator/health">imos-message-scheduler (/actuator/health)</a><br />
+<a href="http://${imos.app_hostname}:${imos.imos-receiver.port}/actuator/health">imos-receiver (/actuator/health)</a><br />
+<a href="http://${imos.app_hostname}:${imos.imos-orchestrator.port}/actuator/health">imos-orchestrator (/actuator/health)</a><br />
+<a href="http://${imos.app_hostname}:${imos.imos-eis-mocker.port}/actuator/health">imos-eis-mocker (/actuator/health)</a><br />
+<a href="http://${imos.app_hostname}:${imos.spring-cloud-admin.port}/actuator/health">imos-data-service (/actuator/health)</a><br />
+<a href="http://${imos.docker_hostname}:${imos.rabbitMQ-GUI.port}">RabbitMQ</a> ${spring.rabbitmq.username} / ${spring.rabbitmq.password}<br />
+<a href="http://${imos.app_hostname}:${imos.spring-cloud-config.port}/actuator/health">spring-cloud-config (/actuator/health)</a><br />
+<a href="http://${imos.app_hostname}:${imos.spring-cloud-admin.port}/actuator/health">spring-cloud-admin (/actuator/health)</a><br />
+MySQL Host: ${database.host}:${database.port} ${spring.datasource.username}/${spring.datasource.password}<br />
+</body>
+</html>

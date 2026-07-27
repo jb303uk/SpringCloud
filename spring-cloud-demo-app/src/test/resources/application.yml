@@ -1,0 +1,14 @@
+spring:
+  config:
+    import: "optional:configserver:"
+  datasource:
+    url: jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1
+    driverClassName: org.hsqldb.jdbc.JDBCDriver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+eureka:
+  client:
+    enabled: false

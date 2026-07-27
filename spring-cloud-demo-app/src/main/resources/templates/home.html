@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Hawk Demo App - Home</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>Hawk Demo Application</h1>
+<br/>
+<p>
+    SecretA:<th:block th:text="${secret}"></th:block>
+</p>
+
+<br/>
+<a href="/web/messaging/rabbitmq/">Test RabbitMQ</a>
+<br/><br/>
+<a href="/web/rds/mysql/">Test MySQL</a>
+</body>
+</html>

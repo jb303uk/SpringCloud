@@ -1,0 +1,111 @@
+---
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: httpbin
+        uri: http://a-1qkrat9vql5lo.columbus.local:9090/get
+        predicates:
+        - Path=/get
+      - id: ok-artifactory
+        uri: https://artifactory.alm.corp.hmrc.gov.uk:443
+        predicates:
+        - Path=/artifactory/**
+        filters:
+        - RewritePath=/(?<segment>.*), /$\{segment}
+      - id: alm-artifactory
+        uri: https://artifactory.alm.corp.hmrc.gov.uk:443
+        predicates:
+        - Path=/alm-artifactory/**
+        filters:
+        - RewritePath=/alm-artifactory/(?<segment>.*),/artifactory/$\{segment}
+      - id: cds-artifactory
+        uri: https://artifactory.t.cit.corp.hmrc.gov.uk:443
+        predicates:
+        - Path=/cds-artifactory/**
+        filters:
+        - RewritePath=/cds-artifactory/(?<segment>.*),/artifactory/$\{segment}
+      - id: alm-gitlab
+        uri: https://gitlab.alm.corp.hmrc.gov.uk:443
+        predicates:
+        - Path=/alm-gitlab/**
+        filters:
+        - RewritePath=/alm-gitlab/(?<segment>.*),/$\{segment}
+      - id: cds-gitlab
+        uri: https://gitlab.t.cit.corp.hmrc.gov.uk:443
+        predicates:
+        - Path=/cds-gitlab/**
+        filters:
+        - RewritePath=/cds-gitlab/(?<segment>.*),/$\{segment}
+      - id: centos-5.11
+        uri: https://vault.centos.org
+        predicates:
+        - Path=/centos-5.11/**
+        filters:
+        - RewritePath=/centos-5.11/(?<segment>.*),/$\{segment}
+      - id: OL5
+        uri: https://yum.oracle.com
+        predicates:
+        - Path=/OL5/**
+        filters:
+        - RewritePath=/OL5/(?<segment>.*),/$\{segment}
+      - id: centos-vault
+        uri: https://vault.centos.org
+        predicates:
+        - Path=/centos-vault/**
+        filters:
+        - RewritePath=/centos-vault/(?<segment>.*),/$\{segment}
+      - id: fedora-archive
+        uri: https://archives.fedoraproject.org
+        predicates:
+        - Path=/fedora-archive/**
+        filters:
+        - RewritePath=/fedora-archive/(?<segment>.*),/$\{segment}        
+      - id: nexus-fastp
+        uri: http://10.102.82.152:8080
+        predicates:
+        - Path=/nexus-fastp/**
+        filters:
+        - RewritePath=/nexus-fastp/(?<segment>.*),/$\{segment}
+      - id: amazonlinux
+        uri: http://amazonlinux.eu-west-2.amazonaws.com
+        predicates:
+        - Path=/amazonlinux/**
+        filters:
+        - RewritePath=/amazonlinux/(?<segment>.*),/$\{segment}
+      - id: RockyLinux810-AppStream
+        uri: http://dl.rockylinux.org/pub/rocky/8.10/AppStream/x86_64/os
+        predicates:
+        - Path=/RockyLinux810AppStream/**
+        filters:
+        - RewritePath=/RockyLinux810AppStream/(?<segment>.*),/$\{segment}
+      - id: RockyLinux810-BaseOS
+        uri: http://dl.rockylinux.org/pub/rocky/8.10/BaseOS/x86_64/os
+        predicates:
+        - Path=/RockyLinux810BaseOS/**
+        filters:
+        - RewritePath=/RockyLinux810BaseOS/(?<segment>.*),/$\{segment}
+      - id: amazonlinuxbucket
+        predicates:
+        - Path=/**
+        uri: https://bucket.vpce-0caf530468b488c4a-dxpceyy2.s3.eu-west-2.vpce.amazonaws.com
+        filters:
+        - PreserveHostHeader
+      - id: gitlab
+        predicates:
+        - Path=/**
+        uri: https://gitlab.alm.corp.hmrc.gov.uk
+        filters:
+        - PreserveHostHeader
+      - id: artifactory
+        predicates:
+        - Path=/**
+        uri: https://artifactory.alm.corp.hmrc.gov.uk
+        filters:
+        - PreserveHostHeader
+      - id: AlmaLinux810
+        predicates:
+        - Path=/**
+        uri: http://aws.repo.almalinux.org/8.10/BaseOS/x86_64/os
+        filters:
+        - PreserveHostHeader

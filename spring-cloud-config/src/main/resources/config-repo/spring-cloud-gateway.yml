@@ -1,0 +1,53 @@
+---
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: spring-cloud-config
+        uri: lb://spring-cloud-config
+        predicates:
+        - Path=/spring-cloud-config/**     
+        filters:
+        - RewritePath=/spring-cloud-config/(?<segment>.*), /$\{segment}
+      - id: spring-cloud-maven-deploy
+        uri: lb://spring-cloud-maven-deploy
+        predicates:
+        - Path=/spring-cloud-maven-deploy/**     
+        filters:
+        - RewritePath=/spring-cloud-maven-deploy/(?<segment>.*), /$\{segment}
+      - id: spring-cloud-admin
+        uri: lb://spring-cloud-admin
+        predicates:
+        - Path=/spring-cloud-admin/**     
+        filters:
+        - RewritePath=/spring-cloud-admin/(?<segment>.*), /$\{segment}
+      - id: spring-cloud-initializr
+        uri: lb://spring-cloud-initializr
+        predicates:
+        - Path=/initializr/**     
+        filters:
+        - RewritePath=/initializr/(?<segment>.*), /$\{segment}
+      - id: spring-cloud-feign-client
+        uri: lb://spring-cloud-feign-client
+        predicates:
+        - Path=/spring-cloud-feign-client/**     
+        filters:
+        - RewritePath=/spring-cloud-feign-client/(?<segment>.*), /$\{segment}
+      - id: emcs-core-new-data-service
+        uri: lb://emcs-core-new-data-service
+        predicates:
+        - Path=/emcs-core-new-data-service/**     
+        filters:
+        - RewritePath=/emcs-core-new-data-service/(?<segment>.*), /$\{segment}
+      - id: data-service
+        uri: lb://data-service
+        predicates:
+        - Path=/data-service/**     
+        filters:
+        - RewritePath=/data-service/(?<segment>.*), /$\{segment}
+      - id: spring-cloud-service-discovery
+        uri: http://localhost:8761
+        predicates:
+        - Path=/spring-cloud-service-discovery/**
+        filters:
+        - RewritePath=/spring-cloud-service-discovery/(?<segment>.*), /$\{segment}

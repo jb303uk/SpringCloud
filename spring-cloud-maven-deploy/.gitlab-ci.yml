@@ -1,0 +1,23 @@
+stages:
+  - maven-install-software
+  - maven-debug
+  - maven-dependency-resolve
+  - maven-version
+  - maven-test
+  - maven-deploy-image
+  - maven-deploy-jar
+  - maven-build-tar
+  #- maven-tag-repo
+variables:
+  GIT_STRATEGY: clone
+  DOCKER_TO_IMAGE: "maven-deploy"
+include:
+  - project: 'imos/gitlab-runners'
+    ref: '1.0'
+    file: '/maven-build/maven-init.yml'
+  - project: 'imos/gitlab-runners'
+    ref: '1.0'
+    file: '/maven-build/maven-build.yml'
+  # - project: 'imos/gitlab-runners'
+  #   ref: ICS2-3210_Maven-Build
+  #   file: '/maven-build/debug.yml'

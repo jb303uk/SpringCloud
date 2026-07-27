@@ -1,0 +1,25 @@
+info:
+  version: "@project.version@"
+  name: "@project.name@"
+  timestamp: "@timestamp@"
+server:
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+    hostname: ${HOSTNAME}.columbus.local
+    instanceId: "@project.artifactId@:${random.int[1,99]}"
+spring:
+  application:
+    name: "@project.artifactId@"
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      discovery:
+        service-id: spring-cloud-config
+        enabled: true

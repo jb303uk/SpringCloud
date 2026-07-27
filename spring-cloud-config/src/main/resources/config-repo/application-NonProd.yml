@@ -1,0 +1,78 @@
+---
+sourceOfConfig: application-NonProd.yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+      sensitive: false
+    refresh:
+      enabled: true
+      sensitive: false
+    health:
+      show-details: always
+    logfile:
+      enabled: true
+      external-file: ${java.io.tmpdir}/spring-boot-logs/${spring.application.name}/${spring.application.name}.log
+    env:
+      show-values: always
+    restart:
+      enabled: true
+    pause:
+      enabled: true
+    resume:
+      enabled: true
+  info:
+    java:
+      enabled: true
+    git:
+      enabled: true
+    env:
+      enabled: true
+logging:
+  file: 
+    name: ${java.io.tmpdir}/spring-boot-logs/${spring.application.name}/${spring.application.name}.log
+log:
+  level: DEBUG
+  file:
+    path: ${java.io.tmpdir}/spring-boot-logs/${spring.application.name}
+    name: ${spring.application.name}
+spring:
+  main:
+    banner-mode: CONSOLE
+  output:
+    ansi:
+      enabled: ALWAYS
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  inetutils:
+    ignoredInterfaces:
+      - docker0
+      - veth.*
+      - eth0
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: /dev
+      prefix: stdout
+      buffered: false
+      suffix:
+      file-date-format:
+  shutdown: graceful
+info:
+  app:
+    hostname: ${spring.cloud.client.hostname}
+    port: ${local.server.port}
+cloud:
+  aws:
+    stack:
+      auto: true
+    region:
+      auto: true
+      use-default-aws-region-chain: true
+    credentials:
+      use-default-aws-credentials-chain: true

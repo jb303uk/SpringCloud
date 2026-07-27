@@ -1,0 +1,15 @@
+---
+server:
+  ssl:
+    key-store: classpath:ssl/HMRC-keyStore.p12
+    key-store-password: changeit
+spring:
+  config:
+    import: "optional:configserver:"
+  application:
+    name: "@project.artifactId@"
+  main:
+    web-application-type: reactive
+eureka:
+  client:
+    enabled: false

@@ -1,0 +1,26 @@
+---
+version: "2"
+plugins:
+  sonar-java:
+    enabled: true
+    config:
+      sonar.java.source: 11
+      minimum_severity: minor
+      tests_patterns:
+        - src/test/**
+  csslint:
+    enabled: true
+  coffeelint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - javascript
+        - java
+  fixme:
+    enabled: true
+exclude_patterns:
+  - .m2/
+  - .mvn/
+  - target/

@@ -1,0 +1,27 @@
+spring:
+  rabbitmq:
+    host: a-1qkrat9vql5lo.columbus.local
+    port: 5672
+    username: remote
+    password: remote
+    virtual-host: /
+  datasource:
+    name: emcs
+    url: jdbc:mysql://${tennant.emcs.db_host}:${tennant.emcs.db_port}/${tennant.emcs.schema:emcs}?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root	
+    password: root
+  cache:
+    type: redis
+  redis:
+    host: a-1qkrat9vql5lo.columbus.local
+    port: 6379
+  boot:
+    admin:
+      ui:
+        public-url: "http://a-1qkrat9vql5lo.columbus.local:8080/spring-cloud-admin/"
+tennant:
+  emcs:
+    db_host: a-1qkrat9vql5lo.columbus.local
+    db_port: 3306
+    schema: emcs

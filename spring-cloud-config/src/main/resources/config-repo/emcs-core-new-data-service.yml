@@ -1,0 +1,9 @@
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+logging:
+  level:
+    org:
+      springframework:
+        orm:
+          jpa: INFO

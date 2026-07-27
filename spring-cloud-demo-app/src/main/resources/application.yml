@@ -1,0 +1,50 @@
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: /dev
+      prefix: stdout
+      buffered: false
+      suffix:
+      file-date-format:
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+    hostname: ${HOSTNAME}.columbus.local
+    instanceId: "@project.artifactId@:${random.int[1,99]}"
+spring:
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      discovery:
+        service-id: spring-cloud-config
+        enabled: true
+  application:
+    name: "@project.artifactId@"
+  ### Example MySQL Configuration with DDL updates
+  datasource:
+    url: jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1
+    driverClassName: org.hsqldb.jdbc.JDBCDriver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  main:
+    allow-bean-definition-overriding: true
+
+hawk:
+  rabbitmq:
+    circuitBreakerExchange: d.emcs-cb-exchange
+    circuitBreakerQueue: d.cb-queue
+    exchange: d.emcs-ie815-exchange
+    queueName: d.ie815-queue
+    routing-key: d.ie815
+    quorum:
+      enabled: true

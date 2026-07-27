@@ -1,0 +1,6 @@
+target/
+*.idea
+/*/.settings/*.prefs
+/*/.project
+*.class
+/*/jte-classes/*

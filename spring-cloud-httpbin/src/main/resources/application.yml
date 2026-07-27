@@ -1,0 +1,38 @@
+server:
+  port: 8080
+#  ssl:
+#    key-store: classpath:ssl/HMRC-keyStore.p12
+#    key-store-password: changeit
+spring:
+  config:
+    import: "optional:configserver:"
+  application:
+    name: "@project.artifactId@"
+  cloud:
+    discovery:
+      enabled: false
+    config:
+      failFast: false
+      discovery:
+        service-id: spring-cloud-httpbin
+        enabled: false
+  jackson:
+    date-format: com.dyrnq.httpbin.RFC3339DateFormat
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+springdoc:
+  swagger-ui:
+    doc-expansion: none
+    display-request-duration: true
+    filter: true
+    operationsSorter: alpha
+    showExtensions: false
+    tagsSorter: alpha
+management:
+  endpoint:
+    gateway:
+      access: unrestricted
+  endpoints:
+    web:
+      exposure:
+        include: "*"
