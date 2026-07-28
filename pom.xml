@@ -19,6 +19,7 @@
     <module>spring-cloud-liquibase</module>
     <module>spring-cloud-jte</module>
     <module>spring-cloud-crud</module>
+    <module>spring-cloud-game</module>
   </modules>
   <groupId>uk.gov.hmrc</groupId>
   <artifactId>spring-cloud-parent</artifactId>
