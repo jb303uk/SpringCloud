@@ -1,204 +1,112 @@
 databaseChangeLog:
   - changeSet:
-      id: loadData-REGIONS
+      id: loadData-POKEMON
       author: James Beardsley
       changes:
         - loadUpdateData:
             columns:
-              - column:
-                  name: REGION_ID
-                  type: NUMERIC
-              - column:
-                  name: REGION_NAME
-                  type: STRING
+            - column:
+                name: ID
+                type: NUMBER
+            - column:
+                name: IDENTIFIER
+                type: VARCHAR2(25 BYTE)
+            - column:
+                name: SPECIES_ID
+                type: NUMBER
+            - column:
+                name: HEIGHT
+                type: NUMBER
+            - column:
+                name: WEIGHT
+                type: VARCHAR2(25 BYTE)
+            - column:
+                name: BASE_EXPERIENCE
+                type: VARCHAR2(25 BYTE)
+            - column:
+                name: ORDER
+                type: NUMBER
+            - column:
+                name: IS_DEFAULT
+                type: NUMBER
             commentLineStartsWith: //
-            file: data/REGIONS.csv
+            file: data/POKEMON.csv
             quotchar: '"'
             relativeToChangelogFile: true
             separator: ","
-            tableName: REGIONS
-            usePreparedStatements: true
-            primaryKey: REGION_ID
+            tableName: POKEMON
+            primaryKey: ID
   - changeSet:
-      id: loadData-LOCATIONS
+      id: loadData-POKEMON_SPECIES
       author: James Beardsley
       changes:
         - loadUpdateData:
             columns:
               - column:
-                  name: LOCATION_ID
-                  type: NUMERIC
+                  name: ID
+                  type: NUMBER
               - column:
-                  name: STREET_ADDRESS
-                  type: STRING
+                  name: IDENTIFIER
+                  type: VARCHAR2(25 BYTE)
               - column:
-                  name: POSTAL_CODE
-                  type: STRING
+                  name: GENERATION_ID
+                  type: NUMBER
               - column:
-                  name: CITY
-                  type: STRING
+                  name: EVOLVES_FROM_SPECIES_ID
+                  type: NUMBER
               - column:
-                  name: STATE_PROVINCE
-                  type: STRING
+                  name: EVOLUTION_CHAIN_ID
+                  type: NUMBER
               - column:
-                  name: COUNTRY_ID
-                  type: STRING                                                    
+                  name: COLOR_ID
+                  type: NUMBER
+              - column:
+                  name: SHAPE_ID
+                  type: NUMBER
+              - column:
+                  name: HABITAT_ID
+                  type: NUMBER
+              - column:
+                  name: GENDER_RATE
+                  type: NUMBER
+              - column:
+                  name: CAPTURE_RATE
+                  type: NUMBER
+              - column:
+                  name: BASE_HAPPINESS
+                  type: NUMBER
+              - column:
+                  name: IS_BABY
+                  type: NUMBER
+              - column:
+                  name: HATCH_COUNTER
+                  type: NUMBER
+              - column:
+                  name: HAS_GENDER_DIFFERENCES
+                  type: NUMBER
+              - column:
+                  name: GROWTH_RATE_ID
+                  type: NUMBER
+              - column:
+                  name: FORMS_SWITCHABLE
+                  type: NUMBER
+              - column:
+                  name: IS_LEGENDARY
+                  type: NUMBER
+              - column:
+                  name: IS_MYTHICAL
+                  type: NUMBER
+              - column:
+                  name: ORDER
+                  type: NUMBER
+              - column:
+                  name: CONQUEST_ORDER
+                  type: NUMBER
             commentLineStartsWith: //
-            file: data/LOCATIONS.csv
+            file: data/POKEMON_SPECIES.csv
             quotchar: '"'
             relativeToChangelogFile: true
             separator: ","
-            tableName: LOCATIONS
+            tableName: POKEMON_SPECIES
             usePreparedStatements: true
-            primaryKey: LOCATION_ID
-  - changeSet:
-      id: loadData-COUNTRIES
-      author: James Beardsley
-      changes:
-        - loadUpdateData:
-            columns:
-              - column:
-                  name: COUNTRY_ID
-                  type: STRING
-              - column:
-                  name: COUNTRY_NAME
-                  type: STRING
-              - column:
-                  name: REGION_ID
-                  type: NUMERIC                                                
-            commentLineStartsWith: //
-            file: data/COUNTRIES.csv
-            quotchar: '"'
-            relativeToChangelogFile: true
-            separator: ","
-            tableName: COUNTRIES
-            usePreparedStatements: true
-            primaryKey: COUNTRY_ID
-  - changeSet:
-      id: loadData-DEPARTMENTS
-      author: James Beardsley
-      changes:
-        - loadUpdateData:
-            columns:
-              - column:
-                  name: DEPARTMENT_ID
-                  type: NUMERIC
-              - column:
-                  name: DEPARTMENT_NAME
-                  type: STRING
-              - column:
-                  name: MANAGER_ID
-                  type: NUMERIC   
-              - column:
-                  name: LOCATION_ID
-                  type: NUMERIC                                               
-            commentLineStartsWith: //
-            file: data/DEPARTMENTS.csv
-            quotchar: '"'
-            relativeToChangelogFile: true
-            separator: ","
-            tableName: DEPARTMENTS
-            usePreparedStatements: true
-            primaryKey: DEPARTMENT_ID
-  - changeSet:
-      id: loadData-JOBS
-      author: James Beardsley
-      changes:
-        - loadUpdateData:
-            columns:
-              - column:
-                  name: JOB_ID
-                  type: STRING
-              - column:
-                  name: JOB_TITLE
-                  type: STRING
-              - column:
-                  name: MIN_SALARY
-                  type: NUMERIC   
-              - column:
-                  name: MAX_SALARY
-                  type: NUMERIC                                               
-            commentLineStartsWith: //
-            file: data/JOBS.csv
-            quotchar: '"'
-            relativeToChangelogFile: true
-            separator: ","
-            tableName: JOBS
-            usePreparedStatements: true
-            primaryKey: JOB_ID
-  - changeSet:
-      id: loadData-EMPLOYEES
-      author: James Beardsley
-      changes:
-        - loadUpdateData:
-            columns:
-              - column:
-                  name: EMPLOYEE_ID
-                  type: NUMERIC
-              - column:
-                  name: FIRST_NAME
-                  type: STRING
-              - column:
-                  name: LAST_NAME
-                  type: STRING   
-              - column:
-                  name: EMAIL
-                  type: STRING     
-              - column:
-                  name: PHONE_NUMBER
-                  type: STRING  
-              - column:
-                  name: HIRE_DATE
-                  type: DATE  
-              - column:
-                  name: JOB_ID
-                  type: STRING  
-              - column:
-                  name: SALARY
-                  type: NUMERIC  
-              - column:
-                  name: COMMISSION_PCT
-                  type: NUMERIC  
-              - column:
-                  name: MANAGER_ID
-                  type: NUMERIC  
-              - column:
-                  name: DEPARTMENT_ID
-                  type: NUMERIC                                            
-            commentLineStartsWith: //
-            file: data/EMPLOYEES.csv
-            quotchar: '"'
-            relativeToChangelogFile: true
-            separator: ","
-            tableName: EMPLOYEES
-            usePreparedStatements: true
-            primaryKey: EMPLOYEE_ID
-  - changeSet:
-      id: loadData-JOB_HISTORY
-      author: James Beardsley
-      changes:
-        - loadUpdateData:
-            columns:
-              - column:
-                  name: EMPLOYEE_ID
-                  type: NUMERIC  
-              - column:
-                  name: START_DATE
-                  type: DATE
-              - column:
-                  name: END_DATE
-                  type: DATE  
-              - column:
-                  name: JOB_ID
-                  type: STRING  
-              - column:
-                  name: DEPARTMENT_ID
-                  type: NUMERIC                                            
-            commentLineStartsWith: //
-            file: data/JOB_HISTORY.csv
-            quotchar: '"'
-            relativeToChangelogFile: true
-            separator: ","
-            tableName: JOB_HISTORY
-            usePreparedStatements: true
-            primaryKey: EMPLOYEE_ID
+            primaryKey: ID
