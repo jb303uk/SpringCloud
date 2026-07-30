@@ -117,14 +117,23 @@ databaseChangeLog:
         columns:
         - column:
             constraints:
-              notNullConstraintName: CATCHES_ID_NN
+              notNullConstraintName: CATCH_ID_NN
               nullable: false
               primaryKey: true
-              primaryKeyName: CATCHES_ID_PK
-            name: ID
+              primaryKeyName: CATCH_ID_PK
+            name: CATCH_ID
             type: NUMBER
         - column:
             name: IDENTIFIER
+            type: VARCHAR2(50)
+        - column:
+            name: CATCH_TIMESTAMP
+            type: TIMESTAMP
+        - column:
+            name: CATCH_UUID
+            type: UUID
+        - column:
+            name: CATCH_EMOJI
             type: VARCHAR2(50)
         - column:
             name: SPECIES_ID
