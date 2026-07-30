@@ -10,7 +10,7 @@ databaseChangeLog:
                 type: NUMBER
             - column:
                 name: IDENTIFIER
-                type: VARCHAR2(25 BYTE)
+                type: VARCHAR2(50)
             - column:
                 name: SPECIES_ID
                 type: NUMBER
@@ -19,10 +19,10 @@ databaseChangeLog:
                 type: NUMBER
             - column:
                 name: WEIGHT
-                type: VARCHAR2(25 BYTE)
+                type: VARCHAR2(50)
             - column:
                 name: BASE_EXPERIENCE
-                type: VARCHAR2(25 BYTE)
+                type: VARCHAR2(50)
             - column:
                 name: ORDER
                 type: NUMBER
@@ -47,7 +47,7 @@ databaseChangeLog:
                   type: NUMBER
               - column:
                   name: IDENTIFIER
-                  type: VARCHAR2(25 BYTE)
+                  type: VARCHAR2(50)
               - column:
                   name: GENERATION_ID
                   type: NUMBER

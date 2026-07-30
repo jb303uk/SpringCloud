@@ -109,5 +109,104 @@ databaseChangeLog:
             type: NUMBER
         tableName: POKEMON_SPECIES
         tablespace: USERS
+- changeSet:
+    id: 3
+    author: generateChangeLog (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              notNullConstraintName: CATCHES_ID_NN
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CATCHES_ID_PK
+            name: ID
+            type: NUMBER
+        - column:
+            name: IDENTIFIER
+            type: VARCHAR2(50)
+        - column:
+            name: SPECIES_ID
+            type: NUMBER
+        - column:
+            name: HEIGHT
+            type: NUMBER
+        - column:
+            name: WEIGHT
+            type: NUMBER
+        - column:
+            name: IVS_ATTACK
+            type: NUMBER
+        - column:
+            name: IVS_DEFENSE
+            type: NUMBER
+        - column:
+            name: IVS_STAMINA
+            type: NUMBER
+        - column:
+            name: IS_SHINY
+            type: BOOLEAN
+        - column:
+            name: IS_XXL
+            type: BOOLEAN
+        - column:
+            name: IS_XXS
+            type: BOOLEAN
+        - column:
+            name: IS_LUCKY
+            type: BOOLEAN
+        - column:
+            name: IS_SHADOW
+            type: BOOLEAN
+        - column:
+            name: LATITUDE
+            type: NUMBER
+        - column:
+            name: LONGITUDE
+            type: NUMBER
+        tableName: CATCHES
+        tablespace: USERS
+- changeSet:
+    id: 4
+    author: generateChangeLog (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              notNullConstraintName: BLOB_ID_NN
+              nullable: false
+              primaryKey: true
+              primaryKeyName: BLOB_PK
+            name: ID
+            type: NUMBER
+        - column:
+            name: IDENTIFIER
+            type: VARCHAR2(50)
+        - column:
+            name: SPECIES_ID
+            type: NUMBER
+        - column:
+            name: BLOB
+            type: BLOB
+        tableName: BLOBS
+        tablespace: USERS
+- changeSet:
+    id: 5
+    author: generateChangeLog (generated)
+    changes:
+    - createSequence:
+        cacheSize: 0
+        incrementBy: 1
+        maxValue: 9990
+        sequenceName: CATCHES_SEQ
+        startValue: 1
+    - createSequence:
+        cacheSize: 0
+        incrementBy: 1
+        maxValue: 9990
+        sequenceName: BLOB_SEQ
+        startValue: 1
 - include:
     file: db/changelog/db.changelog-load-data.yaml
