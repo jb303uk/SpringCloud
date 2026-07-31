@@ -27,9 +27,6 @@ spring:
       discovery:
         service-id: spring-cloud-crud
         enabled: false
-  data:
-    rest:
-      base-path: /api
 eureka:
   instance:
     hostname: ${HOSTNAME}.columbus.local
@@ -44,7 +41,13 @@ app:
       url: "/"
     - name: "Swagger UI"
       url: "/swagger-ui/index.html"
+    - name: "API Docs"
+      url: "/v3/api-docs"
     - name: "Actuator"
       url: "/actuator"
     - name: "H2 Console"
       url: "/h2-console"
+    - name: "Employees (New)"
+      url: "/web/employees/new"
+    - name: "Employees (Show)"
+      url: "/web/employees/show"
