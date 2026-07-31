@@ -19,7 +19,8 @@
     <module>spring-cloud-liquibase</module>
     <module>spring-cloud-jte</module>
     <module>spring-cloud-crud</module>
-    <module>spring-cloud-game</module>
+    <module>spring-cloud-rest</module>
+    <module>spring-cloud-function</module>
   </modules>
   <groupId>uk.gov.hmrc</groupId>
   <artifactId>spring-cloud-parent</artifactId>
@@ -29,9 +30,9 @@
   <properties>
     <java.version>17</java.version>
     <spring-cloud.version>2025.0.3</spring-cloud.version>
-    <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+    <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
     <!-- Fixes Eclipse pom.xml error -->
-    <timestamp>${maven.build.timestamp}</timestamp>
+    <project.build.outputTimestamp>2023-01-01T00:00:00Z</project.build.outputTimestamp>
     <maven.build.timestamp.format>yyyy-MM-dd-HH:mm</maven.build.timestamp.format>
     <gitflow-maven-plugin.version>1.16.0</gitflow-maven-plugin.version>
     <jib-maven-plugin.version>3.4.3</jib-maven-plugin.version>

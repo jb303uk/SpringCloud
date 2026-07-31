@@ -1,0 +1,50 @@
+---
+server:
+  port: 8080
+spring:
+  application:
+    name: "@project.artifactId@"
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    generate-unique-name: false
+    name: jb303
+  inetutils:
+    ignoredInterfaces:
+      - docker0
+      - veth.*
+      - eth0
+  config:
+    import: "optional:configserver:"
+  cloud:
+    discovery:
+      enabled: false
+    config:
+      failFast: false
+      discovery:
+        service-id: spring-cloud-crud
+        enabled: false
+  data:
+    rest:
+      base-path: /api
+eureka:
+  instance:
+    hostname: ${HOSTNAME}.columbus.local
+    instanceId: "@project.artifactId@:${random.int[1,9]}"
+gg:
+  jte:
+    development-mode: true
+app:
+  page-title: "Useful Developer Resources"
+  links:
+    - name: "Home Page"
+      url: "/"
+    - name: "Swagger UI"
+      url: "/swagger-ui/index.html"
+    - name: "Actuator"
+      url: "/actuator"
+    - name: "H2 Console"
+      url: "/h2-console"

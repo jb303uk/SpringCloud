@@ -1,0 +1,25 @@
+---
+server:
+  port: 8080
+spring:
+  application:
+    name: "@project.artifactId@"
+  inetutils:
+    ignoredInterfaces:
+      - docker0
+      - veth.*
+      - eth0
+  config:
+    import: "optional:configserver:"
+  cloud:
+    discovery:
+      enabled: false
+    config:
+      failFast: false
+      discovery:
+        service-id: spring-cloud-function
+        enabled: false
+eureka:
+  instance:
+    hostname: ${HOSTNAME}.columbus.local
+    instanceId: "@project.artifactId@:${random.int[1,9]}"
