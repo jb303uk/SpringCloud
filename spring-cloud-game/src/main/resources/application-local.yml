@@ -1,0 +1,9 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+gg:
+  jte:
+    development-mode: true	
