@@ -24,8 +24,5 @@ public class Catches {
         return catchId;
     }
 
-    public void setCatchId(Integer catchId) {
-        this.catchId = catchId;
-    }
 
 }
