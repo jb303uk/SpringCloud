@@ -10,7 +10,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HR Schema - Add Catches</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PokeCatcher</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
         .container { max-width: 500px; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -47,6 +49,7 @@
                 <tr>
                     <th>Catch ID</th>
                     <th>Species ID</th>
+                    <th>Is Shiny</th>
                 </tr>
 
             </thead>
@@ -55,6 +58,7 @@
                     <tr>
                         <td>${ch.getCatchId()}</td>
                         <td>${ch.getSpeciesId()}</td>
+                        <td>${ch.getIsShiny()}</td>
                     </tr>
 
                 @endfor
