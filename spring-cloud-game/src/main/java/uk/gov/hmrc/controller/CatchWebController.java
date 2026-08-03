@@ -3,7 +3,9 @@ package uk.gov.hmrc.controller;
 import uk.gov.hmrc.entity.Catches;
 import uk.gov.hmrc.repository.CatchRepository;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +24,10 @@ public class CatchWebController {
     }
 
     @GetMapping("/")
-    public String showInsertForm(Model model) {
+    public String showInsertForm(
+    		Model model,
+    		@PageableDefault(size = 5) Pageable pageable)
+    		{
         model.addAttribute("catches", catchRepository.findAll(Sort.by(Sort.Direction.DESC, "catchId")));
         return "catches";
     }

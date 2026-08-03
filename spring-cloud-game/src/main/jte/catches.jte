@@ -46,13 +46,17 @@
             <thead>
                 <tr>
                     <th>Catch ID</th>
+                    <th>Species ID</th>
                 </tr>
+
             </thead>
             <tbody>
                 @for(Catches ch : catches)
                     <tr>
                         <td>${ch.getCatchId()}</td>
+                        <td>${ch.getSpeciesId()}</td>
                     </tr>
+
                 @endfor
             </tbody>
         </table>

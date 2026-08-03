@@ -1,5 +1,7 @@
 package uk.gov.hmrc.entity;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class Catches {
             allocationSize = 1
         )
     private Integer catchId;
+	private Integer species_id;
 
     
     public Catches() {
@@ -24,5 +27,18 @@ public class Catches {
         return catchId;
     }
 
+    public Integer getSpeciesId() {
+        return species_id;
+    }
+    
+    @PrePersist
+    @Column(name = "species_id", nullable = false, updatable = false)
+
+    protected void onCreate() {
+        if (this.species_id == null) {
+            // Generates a random number from 1 to 512 inclusive
+            this.species_id = ThreadLocalRandom.current().nextInt(1, 513);
+        }
+    }
 
 }
