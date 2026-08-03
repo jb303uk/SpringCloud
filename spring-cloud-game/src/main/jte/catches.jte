@@ -50,6 +50,10 @@
                     <th>Catch ID</th>
                     <th>Species ID</th>
                     <th>Is Shiny</th>
+					<th>Attack</th>
+					<th>Defense</th>
+					<th>HP</th>
+
                 </tr>
 
             </thead>
@@ -59,6 +63,10 @@
                         <td>${ch.getCatchId()}</td>
                         <td>${ch.getSpeciesId()}</td>
                         <td>${ch.getIsShiny()}</td>
+                        <td>${ch.getIVsAttack()}</td>
+                        <td>${ch.getIVsdefense()}</td>
+                        <td>${ch.getIVsstamina()}</td>
+
                     </tr>
 
                 @endfor
