@@ -1,522 +1,221 @@
 databaseChangeLog:
 - changeSet:
-    id: 1716199686652-1
+    id: 1
     author: generateChangeLog (generated)
     changes:
     - createTable:
         columns:
         - column:
             constraints:
-              notNullConstraintName: REGION_ID_NN
+              notNullConstraintName: POKEMON_ID_NN
               nullable: false
               primaryKey: true
-              primaryKeyName: REG_ID_PK
-            name: REGION_ID
+              primaryKeyName: POKEMON_ID_ID_PK
+            name: ID
             type: NUMBER
-            autoIncrement: true
-            startWith: 6
         - column:
-            name: REGION_NAME
-            type: VARCHAR2(25 BYTE)
-        tableName: REGIONS
-        tablespace: USERS
-- changeSet:
-    id: 1716199686652-2
-    author: generateChangeLog (generated)
-    changes:
-    - createTable:
-        columns:
+            name: IDENTIFIER
+            type: VARCHAR2(50)
         - column:
-            constraints:
-              notNullConstraintName: COUNTRY_ID_NN
-              nullable: false
-              primaryKey: true
-              primaryKeyName: COUNTRY_C_ID_PK
-            name: COUNTRY_ID
-            remarks: Primary key of countries table.
-            type: CHAR(2 BYTE)
-        - column:
-            name: COUNTRY_NAME
-            remarks: Country name
-            type: VARCHAR2(40 BYTE)
-        - column:
-            name: REGION_ID
-            remarks: Region ID for the country. Foreign key to region_id column in
-              the departments table.
+            name: SPECIES_ID
             type: NUMBER
-        remarks: country table. Contains 25 rows. References with locations table.
-        tableName: COUNTRIES
+        - column:
+            name: HEIGHT
+            type: NUMBER
+        - column:
+            name: WEIGHT
+            type: NUMBER
+        - column:
+            name: BASE_EXPERIENCE
+            type: NUMBER
+        - column:
+            name: ORDER
+            type: NUMBER
+        - column:
+            name: IS_DEFAULT
+            type: NUMBER
+        tableName: POKEMON
+        tablespace: USERS
 - changeSet:
-    id: 1716199686652-3
+    id: 2
     author: generateChangeLog (generated)
     changes:
     - createTable:
         columns:
         - column:
             constraints:
+              notNullConstraintName: POKEMON_SPECIES_ID_NN
               nullable: false
               primaryKey: true
-              primaryKeyName: LOC_ID_PK
-            name: LOCATION_ID
-            remarks: Primary key of locations table
-            type: NUMBER(4, 0)
+              primaryKeyName: POKEMON_SPECIES_ID_PK
+            name: ID
+            type: NUMBER
         - column:
-            name: STREET_ADDRESS
-            remarks: |-
-              Street address of an office, warehouse, or production site of a company.
-              Contains building number and street name
-            type: VARCHAR2(40 BYTE)
+            name: IDENTIFIER
+            type: VARCHAR2(50)
         - column:
-            name: POSTAL_CODE
-            remarks: |-
-              Postal code of the location of an office, warehouse, or production site
-              of a company.
-            type: VARCHAR2(12 BYTE)
+            name: GENERATION_ID
+            type: NUMBER
         - column:
-            constraints:
-              notNullConstraintName: LOC_CITY_NN
-              nullable: false
-            name: CITY
-            remarks: |-
-              A not null column that shows city where an office, warehouse, or
-              production site of a company is located.
-            type: VARCHAR2(30 BYTE)
+            name: EVOLVES_FROM_SPECIES_ID
+            type: NUMBER
         - column:
-            name: STATE_PROVINCE
-            remarks: |-
-              State or Province where an office, warehouse, or production site of a
-              company is located.
-            type: VARCHAR2(25 BYTE)
+            name: EVOLUTION_CHAIN_ID
+            type: NUMBER
         - column:
-            name: COUNTRY_ID
-            remarks: |-
-              Country where an office, warehouse, or production site of a company is
-              located. Foreign key to country_id column of the countries table.
-            type: CHAR(2 BYTE)
-        remarks: |-
-          Locations table that contains specific address of a specific office,
-          warehouse, and/or production site of a company. Does not store addresses /
-          locations of customers. Contains 23 rows; references with the
-          departments and countries tables.
-        tableName: LOCATIONS
+            name: COLOR_ID
+            type: NUMBER
+        - column:
+            name: SHAPE_ID
+            type: NUMBER
+        - column:
+            name: HABITAT_ID
+            type: NUMBER
+        - column:
+            name: GENDER_RATE
+            type: NUMBER
+        - column:
+            name: CAPTURE_RATE
+            type: NUMBER
+        - column:
+            name: BASE_HAPPINESS
+            type: NUMBER
+        - column:
+            name: IS_BABY
+            type: NUMBER
+        - column:
+            name: HATCH_COUNTER
+            type: NUMBER
+        - column:
+            name: HAS_GENDER_DIFFERENCES
+            type: NUMBER
+        - column:
+            name: GROWTH_RATE_ID
+            type: NUMBER
+        - column:
+            name: FORMS_SWITCHABLE
+            type: NUMBER
+        - column:
+            name: IS_LEGENDARY
+            type: NUMBER
+        - column:
+            name: IS_MYTHICAL
+            type: NUMBER
+        - column:
+            name: ORDER
+            type: NUMBER
+        - column:
+            name: CONQUEST_ORDER
+            type: NUMBER
+        tableName: POKEMON_SPECIES
         tablespace: USERS
 - changeSet:
-    id: 1716199686652-4
+    id: 3
     author: generateChangeLog (generated)
     changes:
     - createTable:
         columns:
         - column:
             constraints:
+              notNullConstraintName: CATCH_ID_NN
               nullable: false
               primaryKey: true
-              primaryKeyName: DEPT_ID_PK
-            name: DEPARTMENT_ID
-            remarks: Primary key column of departments table.
-            type: NUMBER(4, 0)
+              primaryKeyName: CATCH_ID_PK
+            name: CATCH_ID
+            type: NUMBER
         - column:
-            constraints:
-              notNullConstraintName: DEPT_NAME_NN
-              nullable: false
-            name: DEPARTMENT_NAME
-            remarks: |-
-              A not null column that shows name of a department. Administration,
-              Marketing, Purchasing, Human Resources, Shipping, IT, Executive, Public
-              Relations, Sales, Finance, and Accounting.
-            type: VARCHAR2(30 BYTE)
+            name: IDENTIFIER
+            type: VARCHAR2(50)
         - column:
-            name: MANAGER_ID
-            remarks: Manager_id of a department. Foreign key to employee_id column
-              of employees table. The manager_id column of the employee table references
-              this column.
-            type: NUMBER(6, 0)
+            name: CATCH_TIMESTAMP
+            type: TIMESTAMP
         - column:
-            name: LOCATION_ID
-            remarks: Location id where a department is located. Foreign key to location_id
-              column of locations table.
-            type: NUMBER(4, 0)
-        remarks: |-
-          Departments table that shows details of departments where employees
-          work. Contains 27 rows; references with locations, employees, and job_history tables.
-        tableName: DEPARTMENTS
+            name: CATCH_UUID
+            type: UUID
+        - column:
+            name: CATCH_EMOJI
+            type: VARCHAR2(50)
+        - column:
+            name: SPECIES_ID
+            type: NUMBER
+        - column:
+            name: HEIGHT
+            type: NUMBER
+        - column:
+            name: WEIGHT
+            type: NUMBER
+        - column:
+            name: IVS_ATTACK
+            type: NUMBER
+        - column:
+            name: IVS_DEFENSE
+            type: NUMBER
+        - column:
+            name: IVS_STAMINA
+            type: NUMBER
+        - column:
+            name: IS_SHINY
+            type: BOOLEAN
+        - column:
+            name: IS_XXL
+            type: BOOLEAN
+        - column:
+            name: IS_XXS
+            type: BOOLEAN
+        - column:
+            name: IS_LUCKY
+            type: BOOLEAN
+        - column:
+            name: IS_SHADOW
+            type: BOOLEAN
+        - column:
+            name: LATITUDE
+            type: NUMBER
+        - column:
+            name: LONGITUDE
+            type: NUMBER
+        tableName: CATCHES
         tablespace: USERS
 - changeSet:
-    id: 1716199686652-5
+    id: 4
     author: generateChangeLog (generated)
     changes:
     - createTable:
         columns:
         - column:
             constraints:
+              notNullConstraintName: BLOB_ID_NN
               nullable: false
               primaryKey: true
-              primaryKeyName: JOB_ID_PK
-            name: JOB_ID
-            remarks: Primary key of jobs table.
-            type: VARCHAR2(10 BYTE)
+              primaryKeyName: BLOB_PK
+            name: ID
+            type: NUMBER
         - column:
-            constraints:
-              notNullConstraintName: JOB_TITLE_NN
-              nullable: false
-            name: JOB_TITLE
-            remarks: A not null column that shows job title, e.g. AD_VP, FI_ACCOUNTANT
-            type: VARCHAR2(35 BYTE)
+            name: IDENTIFIER
+            type: VARCHAR2(50)
         - column:
-            name: MIN_SALARY
-            remarks: Minimum salary for a job title.
-            type: NUMBER(6, 0)
+            name: SPECIES_ID
+            type: NUMBER
         - column:
-            name: MAX_SALARY
-            remarks: Maximum salary for a job title
-            type: NUMBER(6, 0)
-        remarks: |-
-          jobs table with job titles and salary ranges. Contains 19 rows.
-          References with employees and job_history table.
-        tableName: JOBS
+            name: BLOB
+            type: BLOB
+        tableName: BLOBS
         tablespace: USERS
 - changeSet:
-    id: 1716199686652-6
-    author: generateChangeLog (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            constraints:
-              nullable: false
-              primaryKey: true
-              primaryKeyName: EMP_EMP_ID_PK
-            name: EMPLOYEE_ID
-            remarks: Primary key of employees table.
-            type: NUMBER(6, 0)
-        - column:
-            name: FIRST_NAME
-            remarks: First name of the employee. A not null column.
-            type: VARCHAR2(20 BYTE)
-        - column:
-            constraints:
-              notNullConstraintName: EMP_LAST_NAME_NN
-              nullable: false
-            name: LAST_NAME
-            remarks: Last name of the employee. A not null column.
-            type: VARCHAR2(25 BYTE)
-        - column:
-            constraints:
-              notNullConstraintName: EMP_EMAIL_NN
-              nullable: false
-            name: EMAIL
-            remarks: Email id of the employee
-            type: VARCHAR2(25 BYTE)
-        - column:
-            name: PHONE_NUMBER
-            remarks: Phone number of the employee; includes country code and area
-              code
-            type: VARCHAR2(20 BYTE)
-        - column:
-            constraints:
-              notNullConstraintName: EMP_HIRE_DATE_NN
-              nullable: false
-            name: HIRE_DATE
-            remarks: Date when the employee started on this job. A not null column.
-            type: date
-        - column:
-            constraints:
-              notNullConstraintName: EMP_JOB_NN
-              nullable: false
-            name: JOB_ID
-            remarks: |-
-              Current job of the employee; foreign key to job_id column of the
-              jobs table. A not null column.
-            type: VARCHAR2(10 BYTE)
-        - column:
-            name: SALARY
-            remarks: |-
-              Monthly salary of the employee. Must be greater
-              than zero (enforced by constraint emp_salary_min)
-            type: NUMBER(8, 2)
-        - column:
-            name: COMMISSION_PCT
-            remarks: |-
-              Commission percentage of the employee; Only employees in sales
-              department elgible for commission percentage
-            type: NUMBER(2, 2)
-        - column:
-            name: MANAGER_ID
-            remarks: |-
-              Manager id of the employee; has same domain as manager_id in
-              departments table. Foreign key to employee_id column of employees table.
-              (useful for reflexive joins and CONNECT BY query)
-            type: NUMBER(6, 0)
-        - column:
-            name: DEPARTMENT_ID
-            remarks: |-
-              Department id where employee works; foreign key to department_id
-              column of the departments table
-            type: NUMBER(4, 0)
-        remarks: |-
-          employees table. Contains 107 rows. References with departments,
-          jobs, job_history tables. Contains a self reference.
-        tableName: EMPLOYEES
-        tablespace: USERS
-- changeSet:
-    id: 1716199686652-7
-    author: generateChangeLog (generated)
-    changes:
-    - createView:
-        fullDefinition: true
-        selectQuery: |-
-          CREATE OR REPLACE VIEW "EMP_DETAILS_VIEW" ("EMPLOYEE_ID", "JOB_ID", "MANAGER_ID", "DEPARTMENT_ID", "LOCATION_ID", "COUNTRY_ID", "FIRST_NAME", "LAST_NAME", "SALARY", "COMMISSION_PCT", "DEPARTMENT_NAME", "JOB_TITLE", "CITY", "STATE_PROVINCE", "COUNTRY_NAME", "REGION_NAME") AS SELECT
-            e.employee_id,
-            e.job_id,
-            e.manager_id,
-            e.department_id,
-            d.location_id,
-            l.country_id,
-            e.first_name,
-            e.last_name,
-            e.salary,
-            e.commission_pct,
-            d.department_name,
-            j.job_title,
-            l.city,
-            l.state_province,
-            c.country_name,
-            r.region_name
-          FROM
-            employees e,
-            departments d,
-            jobs j,
-            locations l,
-            countries c,
-            regions r
-          WHERE e.department_id = d.department_id
-            AND d.location_id = l.location_id
-            AND l.country_id = c.country_id
-            AND c.region_id = r.region_id
-            AND j.job_id = e.job_id
-        viewName: EMP_DETAILS_VIEW
-- changeSet:
-    id: 1716199686652-8
+    id: 5
     author: generateChangeLog (generated)
     changes:
     - createSequence:
         cacheSize: 0
-        incrementBy: 10
+        incrementBy: 1
         maxValue: 9990
-        sequenceName: DEPARTMENTS_SEQ
-        startValue: 280
-- changeSet:
-    id: 1716199686652-9
-    author: generateChangeLog (generated)
-    changes:
+        sequenceName: CATCHES_SEQ
+        startValue: 1
     - createSequence:
         cacheSize: 0
-        maxValue: 2147483647
-        sequenceName: EMPLOYEES_SEQ
-        startValue: 207
-- changeSet:
-    id: 1716199686652-10
-    author: generateChangeLog (generated)
-    changes:
-    - createSequence:
-        cacheSize: 0
-        incrementBy: 100
-        maxValue: 9900
-        sequenceName: LOCATIONS_SEQ
-        startValue: 3300
-- changeSet:
-    id: 1716199686652-11
-    author: generateChangeLog (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            constraints:
-              notNullConstraintName: JHIST_EMPLOYEE_NN
-              nullable: false
-              primaryKey: true
-              primaryKeyName: JHIST_EMP_ID_ST_DATE_PK
-            name: EMPLOYEE_ID
-            remarks: |-
-              A not null column in the complex primary key employee_id+start_date.
-              Foreign key to employee_id column of the employee table
-            type: NUMBER(6, 0)
-        - column:
-            constraints:
-              notNullConstraintName: JHIST_START_DATE_NN
-              nullable: false
-              primaryKey: true
-              primaryKeyName: JHIST_EMP_ID_ST_DATE_PK
-            name: START_DATE
-            remarks: |-
-              A not null column in the complex primary key employee_id+start_date.
-              Must be less than the end_date of the job_history table. (enforced by
-              constraint jhist_date_interval)
-            type: date
-        - column:
-            constraints:
-              notNullConstraintName: JHIST_END_DATE_NN
-              nullable: false
-            name: END_DATE
-            remarks: |-
-              Last day of the employee in this job role. A not null column. Must be
-              greater than the start_date of the job_history table.
-              (enforced by constraint jhist_date_interval)
-            type: date
-        - column:
-            constraints:
-              notNullConstraintName: JHIST_JOB_NN
-              nullable: false
-            name: JOB_ID
-            remarks: |-
-              Job role in which the employee worked in the past; foreign key to
-              job_id column in the jobs table. A not null column.
-            type: VARCHAR2(10 BYTE)
-        - column:
-            name: DEPARTMENT_ID
-            remarks: Department id in which the employee worked in the past; foreign
-              key to deparment_id column in the departments table
-            type: NUMBER(4, 0)
-        remarks: |-
-          Table that stores job history of the employees. If an employee
-          changes departments within the job or changes jobs within the department,
-          new rows get inserted into this table with old job information of the
-          employee. Contains a complex primary key: employee_id+start_date.
-          Contains 25 rows. References with jobs, employees, and departments tables.
-        tableName: JOB_HISTORY
-        tablespace: USERS
-- changeSet:
-    id: 1716199686652-12
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: EMAIL
-        indexName: EMP_EMAIL_UK
-        tableName: EMPLOYEES
-        unique: true
-- changeSet:
-    id: 1716199686652-13
-    author: generateChangeLog (generated)
-    changes:
-    - addUniqueConstraint:
-        columnNames: EMAIL
-        constraintName: EMP_EMAIL_UK
-        #forIndexName: EMP_EMAIL_UK
-        tableName: EMPLOYEES
-- changeSet:
-    id: 1716199686652-14
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: LOCATION_ID
-        indexName: DEPT_LOCATION_IX
-        tableName: DEPARTMENTS
-- changeSet:
-    id: 1716199686652-15
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: DEPARTMENT_ID
-        indexName: EMP_DEPARTMENT_IX
-        tableName: EMPLOYEES
-- changeSet:
-    id: 1716199686652-16
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: JOB_ID
-        indexName: EMP_JOB_IX
-        tableName: EMPLOYEES
-- changeSet:
-    id: 1716199686652-17
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: MANAGER_ID
-        indexName: EMP_MANAGER_IX
-        tableName: EMPLOYEES
-- changeSet:
-    id: 1716199686652-18
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: LAST_NAME
-        - column:
-            name: FIRST_NAME
-        indexName: EMP_NAME_IX
-        tableName: EMPLOYEES
-- changeSet:
-    id: 1716199686652-19
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: DEPARTMENT_ID
-        indexName: JHIST_DEPARTMENT_IX
-        tableName: JOB_HISTORY
-- changeSet:
-    id: 1716199686652-20
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: EMPLOYEE_ID
-        indexName: JHIST_EMPLOYEE_IX
-        tableName: JOB_HISTORY
-- changeSet:
-    id: 1716199686652-21
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: JOB_ID
-        indexName: JHIST_JOB_IX
-        tableName: JOB_HISTORY
-- changeSet:
-    id: 1716199686652-22
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: CITY
-        indexName: LOC_CITY_IX
-        tableName: LOCATIONS
-- changeSet:
-    id: 1716199686652-23
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: COUNTRY_ID
-        indexName: LOC_COUNTRY_IX
-        tableName: LOCATIONS
-- changeSet:
-    id: 1716199686652-24
-    author: generateChangeLog (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: STATE_PROVINCE
-        indexName: LOC_STATE_PROVINCE_IX
-        tableName: LOCATIONS
+        incrementBy: 1
+        maxValue: 9990
+        sequenceName: BLOB_SEQ
+        startValue: 1
 - include:
     file: db/changelog/db.changelog-load-data.yaml
-- include:
-    file: db/changelog/db.changelog-fk.yaml
