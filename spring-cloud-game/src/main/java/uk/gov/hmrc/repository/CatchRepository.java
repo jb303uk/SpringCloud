@@ -10,3 +10,4 @@ public interface CatchRepository extends JpaRepository<Catches, Integer> {
 	//List<Catches> findAllByOrderByEmployeeIdDesc();
 
 }
+

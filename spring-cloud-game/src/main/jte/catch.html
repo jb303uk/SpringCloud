@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon GO Catch Card with IVs</title>
+    <style>
+        /* Base Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Catch Card Container */
+        .catch-card {
+            width: 360px;
+            height: 680px; /* Slight height increase for IV accommodation */
+            background: linear-gradient(to bottom, #1d6052, #11383a);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 4px solid #ffffff;
+        }
+
+        /* Top Bar: CP Indicator */
+        .cp-container {
+            width: 100%;
+            text-align: center;
+            padding-top: 25px;
+            color: #ffffff;
+            z-index: 10;
+        }
+
+        .cp-label {
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .cp-value {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Map Canvas Background (Curved overlay) */
+        .map-canvas {
+            position: absolute;
+            top: 110px;
+            left: -10%;
+            width: 120%;
+            height: 340px;
+            background-color: #5bb383;
+            background-image:
+                radial-gradient(circle at 30% 20%, #70c495 20%, transparent 21%),
+                radial-gradient(circle at 80% 70%, #4ea373 15%, transparent 16%);
+            border-radius: 50% / 15%;
+            border: 6px solid #ffffff;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        /* Pokémon Showcase Image */
+        .pokemon-sprite {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.25));
+            transform: translateY(-20px);
+        }
+
+        /* Trainer Badge Overlay */
+        .trainer-badge {
+            position: absolute;
+            bottom: 250px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #2c3e50;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .trainer-icon {
+            width: 16px;
+            height: 16px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+
+        /* Details Section */
+        .card-details {
+            margin-top: auto;
+            background: #ffffff;
+            width: 100%;
+            padding: 20px 20px 10px 20px;
+            border-top: 1px solid #e0e0e0;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .pokemon-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #232323;
+            letter-spacing: -0.5px;
+        }
+
+        .catch-meta {
+            font-size: 13px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        .catch-location {
+            color: #2d3436;
+            font-weight: 700;
+        }
+
+        /* IV Appraisal Section */
+        .iv-appraisal-panel {
+            background: #f4f7f6;
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .iv-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .iv-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .iv-label {
+            width: 45px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #555555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* IV Segmented Track (Max 15 points divided into three 5-point chunks) */
+        .iv-track {
+            flex-grow: 1;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            gap: 2px; /* Visual breaks between the 3 sections */
+        }
+
+        /* The active fill bar */
+        .iv-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff7675, #ef5777);
+            border-radius: 2px 0 0 2px;
+            transition: width 0.3s ease;
+        }
+
+        /* Perfect 15/15 IV bar gets an orange/red glow color */
+        .iv-fill.perfect {
+            background: linear-gradient(to right, #ff9f43, #ff6b6b);
+        }
+
+        /* 3-segment milestone grid markers lines inside the track */
+        .iv-grid-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #ffffff;
+            opacity: 0.7;
+        }
+        .line-33 { left: 33.33%; }
+        .line-66 { left: 66.66%; }
+
+        .iv-value-num {
+            width: 25px;
+            text-align: right;
+            font-size: 12px;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        /* Bottom Logo Watermark */
+        .pogo-logo {
+            text-align: right;
+            font-size: 10px;
+            font-weight: 900;
+            color: #ced6e0;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pokémon GO Catch Card Layout -->
+    <div class="catch-card">
+
+        <!-- CP Header -->
+        <div class="cp-container">
+            <span class="cp-label">CP</span>
+            <div class="cp-value">3115</div>
+        </div>
+
+        <!-- Curved Map & Pokémon Placement -->
+        <div class="map-canvas">
+            <img class="pokemon-sprite" src="https://githubusercontent.com" alt="Dragonite">
+        </div>
+        <!-- Trainer Tag -->
+        <div class="trainer-badge">
+            <div class="trainer-icon"></div>
+            <span>Caught by: TrainerRed</span>
+        </div>
+
+        <!-- Meta Text & IV Appraisal Footer -->
+        <div class="card-details">
+            <h2 class="pokemon-name">Dragonite</h2>
+            <p class="catch-meta">Caught on: <span class="catch-location">03/08/2026</span></p>
+            <p class="catch-meta">Location: <span class="catch-location">London, UK</span></p>
+
+            <!-- IV Appraisal Panel -->
+            <div class="iv-appraisal-panel">
+                <!-- Attack Row (15/15 Perfect) -->
+                <div class="iv-row">
+                    <span class="iv-label">ATT</span>
+                    <div class="iv-track">
+                        <div class="iv-fill perfect" style="width: 100%;"></div>
+                        <div class="iv-grid-line line-33"></div>
+                        <div class="iv-grid-line line-66"></div>
+                    </div>
+                    <span class="iv-value-num">15</span>
+                </div>
+
+                <!-- Defense Row (13/15) -->
+                <div class="iv-row">
+                    <span class="iv-label">DEF</span>
+                    <div class="iv-track">
+                        <!-- 13 out of 15 is ~86.6% width -->
+                        <div class="iv-fill" style="width: 86.6%;"></div>
+                        <div class="iv-grid-line line-33"></div>
+                        <div class="iv-grid-line line-66"></div>
+                    </div>
+                    <span class="iv-value-num">13</span>
+                </div>
+
+                <!-- HP Row (14/15) -->
+                <div class="iv-row">
+                    <span class="iv-label">HP</span>
+                    <div class="iv-track">
+                        <!-- 14 out of 15 is ~93.3% width -->
+                        <div class="iv-fill" style="width: 93.3%;"></div>
+                        <div class="iv-grid-line line-33"></div>
+                        <div class="iv-grid-line line-66"></div>
+                    </div>
+                    <span class="iv-value-num">14</span>
+                </div>
+            </div>
+
+            <div class="pogo-logo">Pokémon GO</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

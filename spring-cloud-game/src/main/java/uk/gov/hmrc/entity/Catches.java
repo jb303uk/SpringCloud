@@ -22,30 +22,15 @@ public class Catches {
 	private Integer ivsAttack;
 	private Integer ivsDefense;
 	private Integer ivsStamina;
-
-
     
-    public Catches() {
-    }
+    public Catches() {}
 
-    public Integer getCatchId() {
-        return catchId;
-    }
-    public Integer getSpeciesId() {
-        return species_id;
-    }
-    public Boolean getIsShiny() {
-        return is_shiny;
-    }
-    public Integer getIVsAttack() {
-        return ivsAttack;
-    }      
-    public Integer getIVsdefense() {
-        return ivsDefense;
-    }
-    public Integer getIVsstamina() {
-        return ivsStamina;
-    }
+    public Integer getCatchId() { return catchId; }
+    public Integer getSpeciesId() { return species_id; }
+    public Boolean getIsShiny() { return is_shiny; }
+    public Integer getIVsAttack() { return ivsAttack; }      
+    public Integer getIVsdefense() { return ivsDefense; }
+    public Integer getIVsstamina() { return ivsStamina; }
     @PrePersist
     public void prePersist() {
     	chooseSpecies();
@@ -61,13 +46,13 @@ public class Catches {
             this.species_id = ThreadLocalRandom.current().nextInt(1, 151);
         }
     }
+    
     @Column(name = "is_shiny", nullable = false, updatable = false)
     protected void chooseIsShiny() {
         if (this.is_shiny == null) {
             this.is_shiny = (ThreadLocalRandom.current().nextInt(1, 512) == 1);
         }
-    }
-    
+    }    
 
     @Column(name = "ivs_attack", nullable = false, updatable = false)
     void ivsAttack() {
@@ -76,14 +61,12 @@ public class Catches {
         }
     }
 
-
     @Column(name = "ivs_defense", nullable = false, updatable = false)
     void ivsDefense() {
         if (this.ivsDefense == null) {
             this.ivsDefense = ThreadLocalRandom.current().nextInt(0, 15);
         }
-    }
-    
+    }    
 
     @Column(name = "ivs_stamina", nullable = false, updatable = false)
     void ivsStamina() {
@@ -91,4 +74,4 @@ public class Catches {
             this.ivsStamina = ThreadLocalRandom.current().nextInt(0, 15);
         }
     }
-    }
+}
