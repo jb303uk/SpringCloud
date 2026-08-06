@@ -1,7 +1,7 @@
 @import org.springframework.data.domain.Page
-@import uk.gov.hmrc.entity.Catches
+@import uk.gov.hmrc.entity.CatchSummary
 
-@param Page<Catches> allCatches
+@param Page<CatchSummary> allCatches
 @param String sortAll
 @param String dirAll
 @param String sortHigh
@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HR Schema Dashboard</title>
+    <title>Catches</title>
     <style>
         body { font-family: sans-serif; margin: 20px; }
         table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
@@ -32,18 +32,19 @@
         <thead>
             <tr>
                 <th><a href="?sortAll=id&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=zzz&sortHigh=${sortHigh}&dirHigh=${dirHigh}">ID</a></th>
-                <th><a href="?sortAll=firstName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">First Name</a></th>
-                <th><a href="?sortAll=lastName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Last Name</a></th>
+                <th><a href="?sortAll=firstName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Name</a></th>
+                <th><a href="?sortAll=lastName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Is Shiny</a></th>
+                <th><a href="?sortAll=lastName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">IVs</a></th>
                 <th>Salary</th>
             </tr>
         </thead>
         <tbody>
-            @for(Catches emp : allCatches.getContent())
+            @for(CatchSummary emp : allCatches.getContent())
                 <tr>
                     <td>${emp.getCatchId()}</td>
-                    <td>x</td>
-                    <td>y</td>
-                    <td>z</td>
+                    <td>${emp.getPokemonName()}</td>
+                    <td>${emp.getIsShiny()}</td>
+                    <td>${emp.getIVsAttack()} / {emp.getIVsdefense()} / {emp.getIVsstamina()}</td>
                 </tr>
             @endfor
         </tbody>

@@ -43,35 +43,35 @@ public class Catches {
     @Column(name = "species_id", nullable = false, updatable = false)
     protected void chooseSpecies() {
         if (this.species_id == null) {
-            this.species_id = ThreadLocalRandom.current().nextInt(1, 151);
+            this.species_id = ThreadLocalRandom.current().nextInt(1, 152);
         }
     }
     
     @Column(name = "is_shiny", nullable = false, updatable = false)
     protected void chooseIsShiny() {
         if (this.is_shiny == null) {
-            this.is_shiny = (ThreadLocalRandom.current().nextInt(1, 512) == 1);
+            this.is_shiny = (ThreadLocalRandom.current().nextInt(0, 512) == 0);
         }
     }    
 
     @Column(name = "ivs_attack", nullable = false, updatable = false)
     void ivsAttack() {
         if (this.ivsAttack == null) {
-            this.ivsAttack = ThreadLocalRandom.current().nextInt(0,15);
+            this.ivsAttack = ThreadLocalRandom.current().nextInt(0,16);
         }
     }
 
     @Column(name = "ivs_defense", nullable = false, updatable = false)
     void ivsDefense() {
         if (this.ivsDefense == null) {
-            this.ivsDefense = ThreadLocalRandom.current().nextInt(0, 15);
+            this.ivsDefense = ThreadLocalRandom.current().nextInt(0, 16);
         }
     }    
 
     @Column(name = "ivs_stamina", nullable = false, updatable = false)
     void ivsStamina() {
         if (this.ivsStamina == null) {
-            this.ivsStamina = ThreadLocalRandom.current().nextInt(0, 15);
+            this.ivsStamina = ThreadLocalRandom.current().nextInt(0, 16);
         }
     }
 }

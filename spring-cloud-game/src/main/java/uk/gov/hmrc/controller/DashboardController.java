@@ -1,6 +1,6 @@
 package uk.gov.hmrc.controller;
 
-import uk.gov.hmrc.repository.*;
+import uk.gov.hmrc.repository.CatchView;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DashboardController {
 
-    private final CatchRepository catchRepository;
+    private final CatchView catchView;
 
-    public DashboardController(CatchRepository catchRepository) {
-        this.catchRepository = catchRepository;
+    public DashboardController(CatchView catchView) {
+        this.catchView = catchView;
     }
 
-    @GetMapping("/dashboard")
+    @GetMapping("/catchview")
     public String getDashboard(
             // Query 1 Parameters (All Employees)
             @RequestParam(defaultValue = "0") int pageAll,
@@ -33,7 +33,7 @@ public class DashboardController {
         Pageable pageableAll = PageRequest.of(pageAll, sizeAll, sortOrderAll);
 
         // Fetch independent datasets
-        model.addAttribute("allCatches", catchRepository.findAll(pageableAll));
+        model.addAttribute("allCatches", catchView.findAll(pageableAll));
         //model.addAttribute("highEarners", employeeRepository.findBySalaryGreaterThan(new BigDecimal(10000), pageableHigh));
 
         // Pass control metadata back to retain state in UI links
