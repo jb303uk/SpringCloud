@@ -24,10 +24,8 @@
 </head>
 <body>
 
-    <h1>HR Department Dashboard</h1>
+    <h1>Catches</h1>
 
-    <!-- SECTION 1: ALL EMPLOYEES -->
-    <h2>All Employees</h2>
     <table>
         <thead>
             <tr>
@@ -35,7 +33,6 @@
                 <th><a href="?sortAll=firstName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Name</a></th>
                 <th><a href="?sortAll=lastName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Is Shiny</a></th>
                 <th><a href="?sortAll=lastName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">IVs</a></th>
-                <th>Salary</th>
             </tr>
         </thead>
         <tbody>
@@ -44,7 +41,7 @@
                     <td>${emp.getCatchId()}</td>
                     <td>${emp.getPokemonName()}</td>
                     <td>${emp.getIsShiny()}</td>
-                    <td>${emp.getIVsAttack()} / {emp.getIVsdefense()} / {emp.getIVsstamina()}</td>
+                    <td>${emp.getIVsAttack()} / ${emp.getIVsdefense()} / ${emp.getIVsstamina()}</td>
                 </tr>
             @endfor
         </tbody>
