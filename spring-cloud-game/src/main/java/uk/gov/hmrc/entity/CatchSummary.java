@@ -1,4 +1,4 @@
-package uk.gov.hmrc;
+package uk.gov.hmrc.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable;

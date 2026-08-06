@@ -24,8 +24,7 @@ public class CatchWebController {
     }
 
     @GetMapping("/")
-    public String showInsertForm(
-    		Model model,
+    public String showInsertForm(Model model,
     		@PageableDefault(size = 5) Pageable pageable)
     		{
         model.addAttribute("catches", catchRepository.findAll(Sort.by(Sort.Direction.DESC, "catchId")));

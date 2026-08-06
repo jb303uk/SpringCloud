@@ -48,7 +48,7 @@
             <thead>
                 <tr>
                     <th>Catch ID</th>
-                    <th>Species ID</th>
+                    <th>Pokemon</th>
                     <th>Is Shiny</th>
 					<th>IVs</th>
                 </tr>
