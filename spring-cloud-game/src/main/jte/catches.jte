@@ -55,7 +55,7 @@
                 <th><a href="?sortAll=speciesId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Name ID</a></th>
                 <th><a href="?sortAll=pokemonName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Name</a></th>
                 <th><a href="?sortAll=isShiny&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Is Shiny</a></th>
-                <th><a href="?sortAll=ivsAttack&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">IVs</a></th>
+                <th><a href="?sortAll=ivsPercent&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">IVs %</a></th>
             </tr>
         </thead>
         <tbody>
@@ -65,7 +65,7 @@
                     <td>${emp.getSpeciesId()}</td>
                     <td>${emp.getPokemonName()}</td>
                     <td>${emp.getIsShiny()}</td>
-                    <td>${emp.getIVsAttack()} / ${emp.getIVsdefense()} / ${emp.getIVsstamina()}</td>
+                    <td>${emp.getIVsPercent()}</td>
                 </tr>
             @endfor
         </tbody>

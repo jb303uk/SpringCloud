@@ -205,6 +205,36 @@ databaseChangeLog:
     id: 5
     author: generateChangeLog (generated)
     changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              notNullConstraintName: POKEMON_SPECIES_NAMES_NN
+              nullable: false
+              primaryKey: true
+              primaryKeyName: POKEMON_SPECIES_NAMES_PK
+            name: POKEMON_SPECIES_ID
+            type: NUMBER
+        - column:
+            constraints:
+              notNullConstraintName: LOCAL_LANGUAGE_ID_NN
+              nullable: false
+              primaryKey: true
+              primaryKeyName: POKEMON_SPECIES_NAMES_PK
+            name: LOCAL_LANGUAGE_ID
+            type: NUMBER
+        - column:
+            name: NAME
+            type: VARCHAR2(50)
+        - column:
+            name: GENUS
+            type: VARCHAR2(50)
+        tableName: POKEMON_SPECIES_NAMES
+        tablespace: USERS
+- changeSet:
+    id: 10
+    author: generateChangeLog (generated)
+    changes:
     - createSequence:
         cacheSize: 0
         incrementBy: 1
@@ -218,14 +248,23 @@ databaseChangeLog:
         sequenceName: BLOB_SEQ
         startValue: 1
 - changeSet:
-    id: 6
+    id: 20
     author: generateChangeLog (generated)
     changes:
     - createView:
         fullDefinition: true
         selectQuery: |-
           CREATE VIEW CATCHES_VIEW AS
-          SELECT s.IDENTIFIER POKEMON_NAME, c.* FROM CATCHES c, POKEMON_SPECIES s where c.SPECIES_ID = s.id
+          SELECT 
+          c.catch_id, c.species_id
+          ,c.is_shiny
+          ,n.NAME POKEMON_NAME, n.GENUS
+          ,(c.IVS_ATTACK + c.IVS_DEFENSE + c.IVS_STAMINA) * 100 / 45 as IVS_PERCENT,
+          c.IVS_ATTACK, c.IVS_DEFENSE, c.IVS_STAMINA
+          FROM CATCHES c, POKEMON_SPECIES_NAMES n 
+          where 
+          c.SPECIES_ID = n.POKEMON_SPECIES_ID
+          and n.LOCAL_LANGUAGE_ID = 9
         viewName: CATCHES_VIEW
 - include:
     file: db/changelog/db.changelog-load-data.yaml

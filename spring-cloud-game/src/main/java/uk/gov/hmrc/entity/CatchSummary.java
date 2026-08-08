@@ -17,7 +17,7 @@ public class CatchSummary {
 	private Integer ivsAttack;
 	private Integer ivsDefense;
 	private Integer ivsStamina;
-	//private Integer ivsPercent;
+	private Integer ivsPercent;
 
 	public String getPokemonName() { return pokemonName; }
     public Integer getCatchId() { return catchId; }
@@ -26,6 +26,6 @@ public class CatchSummary {
     public Integer getIVsAttack() { return ivsAttack; }      
     public Integer getIVsdefense() { return ivsDefense; }
     public Integer getIVsstamina() { return ivsStamina; }
-    //public Integer getIVsivsPercent() { return ivsPercent; }
+    public Integer getIVsPercent() { return ivsPercent; }
     
 }
