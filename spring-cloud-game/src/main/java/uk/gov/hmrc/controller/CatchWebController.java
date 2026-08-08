@@ -1,7 +1,9 @@
 package uk.gov.hmrc.controller;
 
 import uk.gov.hmrc.entity.Catches;
+import uk.gov.hmrc.repository.CatchView;
 import uk.gov.hmrc.repository.CatchRepository;
+
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -18,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CatchWebController {
 
     private final CatchRepository catchRepository;
-
-    public CatchWebController(CatchRepository catchRepository) {
+    private final CatchView catchView;
+    
+    public CatchWebController(CatchRepository catchRepository, CatchView catchView) {
         this.catchRepository = catchRepository;
+		this.catchView = catchView;
     }
 
     @GetMapping("/")
