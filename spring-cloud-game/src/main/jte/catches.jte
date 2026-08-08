@@ -1,10 +1,17 @@
 @import uk.gov.hmrc.entity.Catches
 @import java.util.List
+@import org.springframework.data.domain.Page
+@import uk.gov.hmrc.entity.CatchSummary
 
 @param uk.gov.hmrc.entity.Catches Catches
 @param String success = null
 
 @param List<Catches> catches
+@param Page<CatchSummary> allCatches
+@param String sortAll
+@param String dirAll
+@param String sortHigh
+@param String dirHigh
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,30 +48,34 @@
         <button type="submit">Throw</button>
     </form>
     </div>
-    @if(catches.isEmpty())
-        <div class="no-data">Nothing found yet</div>
-    @else
-        <table>
-            <thead>
+    <table>
+        <thead>
+            <tr>
+                <th><a href="?sortAll=id&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=zzz&sortHigh=${sortHigh}&dirHigh=${dirHigh}">ID</a></th>
+                <th><a href="?sortAll=firstName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Name</a></th>
+                <th><a href="?sortAll=lastName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Is Shiny</a></th>
+                <th><a href="?sortAll=lastName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">IVs</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(CatchSummary emp : allCatches.getContent())
                 <tr>
-                    <th>Catch ID</th>
-                    <th>Pokemon</th>
-                    <th>Is Shiny</th>
-					<th>IVs</th>
+                    <td>${emp.getCatchId()}</td>
+                    <td>${emp.getPokemonName()}</td>
+                    <td>${emp.getIsShiny()}</td>
+                    <td>${emp.getIVsAttack()} / ${emp.getIVsdefense()} / ${emp.getIVsstamina()}</td>
                 </tr>
+            @endfor
+        </tbody>
+    </table>
 
-            </thead>
-            <tbody>
-                @for(Catches ch : catches)
-                    <tr>
-                        <td>${ch.getCatchId()}</td>
-                        <td>${ch.getSpeciesId()}</td>
-                        <td>${ch.getIsShiny()}</td>
-                        <td>${ch.getIVsAttack()} / ${ch.getIVsdefense()} / ${ch.getIVsstamina()}</td>
-                    </tr>
-                @endfor
-            </tbody>
-        </table>
-    @endif
+    <div class="pagination">
+        @for(int i = 0; i < allCatches.getTotalPages(); i++)
+            <a href="?pageAll=${i}&sortAll=${sortAll}&dirAll=${dirAll}&pageHigh=aaa&sortHigh=${sortHigh}&dirHigh=${dirHigh}" 
+               class="${i == allCatches.getNumber() ? "active" : ""}">
+               ${i + 1}
+            </a>
+        @endfor
+    </div>
 </body>
 </html>
