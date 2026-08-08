@@ -3,11 +3,9 @@ package uk.gov.hmrc.controller;
 import uk.gov.hmrc.entity.Catches;
 import uk.gov.hmrc.repository.CatchView;
 import uk.gov.hmrc.repository.CatchRepository;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +29,7 @@ public class CatchWebController {
     @GetMapping("/")
     public String getDashboard(
             @RequestParam(defaultValue = "0") int pageAll,
-            @RequestParam(defaultValue = "5") int sizeAll,
+            @RequestParam(defaultValue = "10") int sizeAll,
             @RequestParam(defaultValue = "catchId") String sortAll,
             @RequestParam(defaultValue = "desc") String dirAll,            
             Model model) {
