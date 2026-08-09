@@ -1,6 +1,9 @@
 package uk.gov.hmrc.entity;
 
 import jakarta.persistence.*;
+
+import java.util.Base64;
+
 import org.hibernate.annotations.Immutable;
 
 @Entity
@@ -18,7 +21,10 @@ public class CatchSummary {
 	private Integer ivsDefense;
 	private Integer ivsStamina;
 	private Integer ivsPercent;
-
+	private String shinyIcon;
+    @Lob
+    private byte[] blob;
+    
 	public String getPokemonName() { return pokemonName; }
     public Integer getCatchId() { return catchId; }
     public Integer getSpeciesId() { return speciesId; }
@@ -27,5 +33,16 @@ public class CatchSummary {
     public Integer getIVsdefense() { return ivsDefense; }
     public Integer getIVsstamina() { return ivsStamina; }
     public Integer getIVsPercent() { return ivsPercent; }
+    public String getShinyIcon() { return shinyIcon; }
+    public byte[] getbase64png() { return blob; }
+    
+    @Transient
+    public String getImageBase64() {
+        if (this.blob == null || this.blob.length == 0) {
+            return null;
+        }
+        String base64Data = Base64.getEncoder().encodeToString(this.blob);
+        return "data:image/png;base64," + base64Data;
+    }
     
 }

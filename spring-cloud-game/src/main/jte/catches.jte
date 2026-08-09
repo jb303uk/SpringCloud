@@ -51,6 +51,7 @@
     <table>
         <thead>
             <tr>
+                <th><a href="?sortAll=catchId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=zzz&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Icon</a></th>
                 <th><a href="?sortAll=catchId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=zzz&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Count</a></th>
                 <th><a href="?sortAll=speciesId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Name ID</a></th>
                 <th><a href="?sortAll=pokemonName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Name</a></th>
@@ -61,10 +62,11 @@
         <tbody>
             @for(CatchSummary emp : allCatches.getContent())
                 <tr>
+                    <td><img src="${emp.getImageBase64()}" alt="Database Image Source" /></td>
                     <td>${emp.getCatchId()}</td>
                     <td>${emp.getSpeciesId()}</td>
                     <td>${emp.getPokemonName()}</td>
-                    <td>${emp.getIsShiny()}</td>
+                    <td>${emp.getShinyIcon()}</td>
                     <td>${emp.getIVsPercent()}</td>
                 </tr>
             @endfor

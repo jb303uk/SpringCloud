@@ -152,6 +152,9 @@ databaseChangeLog:
                   name: SPECIES_ID
                   type: NUMBER
               - column:
+                  name: IS_SHINY
+                  type: BOOLEAN                  
+              - column:
                   name: BLOB
                   type: BLOB
             commentLineStartsWith: //
