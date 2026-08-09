@@ -22,6 +22,8 @@ public class Catches {
 	private Integer ivsAttack;
 	private Integer ivsDefense;
 	private Integer ivsStamina;
+    @Column(name = "USERUUID")
+    private String USERUUID;
     
     public Catches() {}
 
@@ -31,6 +33,7 @@ public class Catches {
     public Integer getIVsAttack() { return ivsAttack; }      
     public Integer getIVsdefense() { return ivsDefense; }
     public Integer getIVsstamina() { return ivsStamina; }
+    public String getUSERUUID() { return USERUUID; }
     @PrePersist
     public void prePersist() {
     	chooseSpecies();

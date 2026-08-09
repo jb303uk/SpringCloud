@@ -5,6 +5,7 @@
 
 @param uk.gov.hmrc.entity.Catches Catches
 @param String success = null
+@param String USERUUID
 
 @param List<Catches> catches
 @param Page<CatchSummary> allCatches
@@ -19,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>PokeCatcher</title>
+    <title>🥚</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
         .container { max-width: 500px; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -43,8 +44,8 @@
     
 
     <form action="/" method="POST">
-
         <button type="submit">🥚</button>
+        <input type="hidden" id="USERUUID" name="USERUUID" value="${USERUUID}"> 
     </form>
     </div>
     <table>

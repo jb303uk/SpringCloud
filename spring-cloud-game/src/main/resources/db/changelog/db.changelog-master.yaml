@@ -130,8 +130,8 @@ databaseChangeLog:
             name: CATCH_TIMESTAMP
             type: TIMESTAMP
         - column:
-            name: CATCH_UUID
-            type: UUID
+            name: USERUUID
+            type: VARCHAR2(50)
         - column:
             name: CATCH_EMOJI
             type: VARCHAR2(50)
