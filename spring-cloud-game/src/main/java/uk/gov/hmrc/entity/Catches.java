@@ -43,7 +43,7 @@ public class Catches {
     @Column(name = "species_id", nullable = false, updatable = false)
     protected void chooseSpecies() {
         if (this.species_id == null) {
-            this.species_id = ThreadLocalRandom.current().nextInt(1, 152);
+            this.species_id = ThreadLocalRandom.current().nextInt(0, 152);
         }
     }
     

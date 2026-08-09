@@ -199,7 +199,7 @@ databaseChangeLog:
         - column:
             name: BLOB
             type: BLOB
-        tableName: BLOBS
+        tableName: BLOB
         tablespace: USERS
 - changeSet:
     id: 5
