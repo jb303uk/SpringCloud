@@ -22,6 +22,7 @@ public class CatchSummary {
 	private Integer ivsStamina;
 	private Integer ivsPercent;
 	private String shinyIcon;
+	private String userUUID;
     @Lob
     private byte[] blob;
     
@@ -34,6 +35,7 @@ public class CatchSummary {
     public Integer getIVsstamina() { return ivsStamina; }
     public Integer getIVsPercent() { return ivsPercent; }
     public String getShinyIcon() { return shinyIcon; }
+    public String getuserUUID() { return userUUID; }
     
     @Transient
     public String getImageBase64() {

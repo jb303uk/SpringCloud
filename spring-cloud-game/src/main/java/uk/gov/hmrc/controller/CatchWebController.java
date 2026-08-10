@@ -42,11 +42,6 @@ public class CatchWebController {
             @CookieValue(name = "userUUID", required = false) String userUUID,
             HttpServletResponse response,
             Model model) {
-        Sort sortOrderAll = dirAll.equalsIgnoreCase("desc") ? Sort.by(sortAll).descending() : Sort.by(sortAll).ascending();
-        Pageable pageableAll = PageRequest.of(pageAll, sizeAll, sortOrderAll);
-        model.addAttribute("allCatches", catchView.findAll(pageableAll));
-        model.addAttribute("sortAll", sortAll);
-        model.addAttribute("dirAll", dirAll);
         String uuid = userUUID;
         if (uuid == null || uuid.isEmpty()) {
             uuid = UUID.randomUUID().toString();
@@ -59,7 +54,14 @@ public class CatchWebController {
             else {
                 //System.out.println("Existing user:" + userUUID);
                 model.addAttribute("USERUUID",userUUID);
+                uuid = userUUID;
         }
+        
+        Sort sortOrderAll = dirAll.equalsIgnoreCase("desc") ? Sort.by(sortAll).descending() : Sort.by(sortAll).ascending();
+        Pageable pageableAll = PageRequest.of(pageAll, sizeAll, sortOrderAll);
+        model.addAttribute("allCatches", catchView.findByUserUUID(uuid,pageableAll));
+        model.addAttribute("sortAll", sortAll);
+        model.addAttribute("dirAll", dirAll);
         return "catches";
     }
 
