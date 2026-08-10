@@ -36,7 +36,7 @@ public class CatchWebController {
     @GetMapping("/")
     public String getDashboard(
             @RequestParam(defaultValue = "0") int pageAll,
-            @RequestParam(defaultValue = "10") int sizeAll,
+            @RequestParam(defaultValue = "5") int sizeAll,
             @RequestParam(defaultValue = "catchId") String sortAll,
             @RequestParam(defaultValue = "desc") String dirAll,  
             @CookieValue(name = "userUUID", required = false) String userUUID,
@@ -57,7 +57,7 @@ public class CatchWebController {
             model.addAttribute("USERUUID",uuid);
         }
             else {
-                System.out.println("Existing user:" + userUUID);
+                //System.out.println("Existing user:" + userUUID);
                 model.addAttribute("USERUUID",userUUID);
         }
         return "catches";

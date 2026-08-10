@@ -45,7 +45,7 @@
 
     <form action="/" method="POST">
         <button type="submit">🥚</button>
-        <input type="hidden" id="USERUUID" name="USERUUID" value="${USERUUID}"> 
+        <input type="text" id="USERUUID" name="USERUUID" value="${USERUUID}"> 
     </form>
     </div>
     <table>

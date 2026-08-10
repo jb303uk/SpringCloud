@@ -34,7 +34,6 @@ public class CatchSummary {
     public Integer getIVsstamina() { return ivsStamina; }
     public Integer getIVsPercent() { return ivsPercent; }
     public String getShinyIcon() { return shinyIcon; }
-    public byte[] getbase64png() { return blob; }
     
     @Transient
     public String getImageBase64() {

@@ -33,7 +33,7 @@ public class Catches {
     public Integer getIVsAttack() { return ivsAttack; }      
     public Integer getIVsdefense() { return ivsDefense; }
     public Integer getIVsstamina() { return ivsStamina; }
-    public String getUSERUUID() { return USERUUID; }
+    public String getUUID() { return USERUUID; }
     @PrePersist
     public void prePersist() {
     	chooseSpecies();
@@ -42,6 +42,7 @@ public class Catches {
     	ivsDefense();
     	ivsStamina();
     }
+    
     
     @Column(name = "species_id", nullable = false, updatable = false)
     protected void chooseSpecies() {
@@ -76,5 +77,9 @@ public class Catches {
         if (this.ivsStamina == null) {
             this.ivsStamina = ThreadLocalRandom.current().nextInt(0, 16);
         }
+    }
+    
+    public void setUSERUUID(String USERUUID ) {
+        this.USERUUID = USERUUID;
     }
 }
