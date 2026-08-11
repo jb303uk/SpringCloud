@@ -11,8 +11,6 @@
 @param Page<CatchSummary> allCatches
 @param String sortAll
 @param String dirAll
-@param String sortHigh
-@param String dirHigh
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,11 +49,11 @@
     <table>
         <thead>
             <tr>
-                <th><a href="?sortAll=isShiny&dirAll=${dirAll.equals("asc") ? "desc" : "desc"}&pageHigh=zzz&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Icon</a></th>
-                <th><a href="?sortAll=catchId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=zzz&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Count</a></th>
-                <th><a href="?sortAll=speciesId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">#</a></th>
-                <th><a href="?sortAll=pokemonName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=xxx&sortHigh=${sortHigh}&dirHigh=${dirHigh}">Name</a></th>
-                <th><a href="?sortAll=ivsPercent&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}&pageHigh=yyy&sortHigh=${sortHigh}&dirHigh=${dirHigh}">IVs %</a></th>
+                <th><a href="?sortAll=isShiny&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Icon</a></th>
+                <th><a href="?sortAll=catchId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Count</a></th>
+                <th><a href="?sortAll=speciesId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">#</a></th>
+                <th><a href="?sortAll=pokemonName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Name</a></th>
+                <th><a href="?sortAll=ivsPercent&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">IVs %</a></th>
             </tr>
         </thead>
         <tbody>
@@ -73,7 +71,7 @@
 
     <div class="pagination">
         @for(int i = 0; i < allCatches.getTotalPages(); i++)
-            <a href="?pageAll=${i}&sortAll=${sortAll}&dirAll=${dirAll}&pageHigh=aaa&sortHigh=${sortHigh}&dirHigh=${dirHigh}" 
+            <a href="?pageAll=${i}&sortAll=${sortAll}&dirAll=${dirAll}" 
                class="${i == allCatches.getNumber() ? "active" : ""}">
                ${i + 1}
             </a>
