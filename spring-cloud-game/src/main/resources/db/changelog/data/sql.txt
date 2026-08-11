@@ -1,9 +1,9 @@
 SELECT 
-n.NAME, n.GENUS
-,s.IDENTIFIER POKEMON_NAME
-,(c.IVS_ATTACK + c.IVS_DEFENSE + c.IVS_STAMINA) * 100 / 45 as IVS_PERCENT 
-FROM CATCHES c, POKEMON_SPECIES s, POKEMON_SPECIES_NAMES n 
-where 
-c.SPECIES_ID = s.id
-and s.ID = n.POKEMON_SPECIES_ID
-and n.LOCAL_LANGUAGE_ID = 9
+useruuid
+,species_id
+,count(species_id) count_of_catches
+,sum(is_shiny) no_shinies 
+FROM CATCHES 
+// where useruuid = '173d0fbb-0993-4bff-b97e-4c7a5aeaf33b' 
+group by species_id, useruuid
+order by useruuid

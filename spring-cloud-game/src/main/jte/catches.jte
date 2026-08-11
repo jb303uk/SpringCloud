@@ -33,7 +33,9 @@
         th { background-color: #eaeff2; color: #333333; }
         tr:nth-child(even) { background-color: #f9f9f9; }
         .no-data { text-align: center; color: #777777; font-style: italic; padding: 20px; }
-        
+        .pagination { display: flex; gap: 10px; list-style: none; }
+        .disabled { color: #ccc; pointer-events: none; }
+
     </style>
 </head>
 <body>
@@ -49,7 +51,7 @@
     <table>
         <thead>
             <tr>
-                <th><a href="?sortAll=isShiny&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Icon</a></th>
+                <th><a href="?sortAll=isShiny&dirAll=${dirAll.equals("asc") ? "asc" : "desc"}">Icon</a></th>
                 <th><a href="?sortAll=catchId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Count</a></th>
                 <th><a href="?sortAll=speciesId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">#</a></th>
                 <th><a href="?sortAll=pokemonName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Name</a></th>
@@ -69,14 +71,34 @@
         </tbody>
     </table>
 
-    <div class="pagination">
-        @for(int i = 0; i < allCatches.getTotalPages(); i++)
-            <a href="?pageAll=${i}&sortAll=${sortAll}&dirAll=${dirAll}" 
-               class="${i == allCatches.getNumber() ? "active" : ""}">
-               ${i + 1}
-            </a>
-        @endfor
-        <a href="links">(Links)</a>
-    </div>
+    <nav>
+        <ul class="pagination">
+            <!-- Previous Button -->
+            @if(allCatches.hasPrevious())
+                <li>
+                    <a href="?pageAll=${allCatches.getNumber() - 1}&sortAll=${sortAll}&dirAll=${dirAll}">
+                        « Previous
+                    </a>
+                </li>
+            @else
+                <li class="disabled"><span>« Previous</span></li>
+            @endif
+
+            <!-- Page Indicator -->
+            <li><span>Page ${allCatches.getNumber()} of ${allCatches.getTotalPages()}</span></li>
+
+            <!-- Next Button -->
+            @if(allCatches.hasNext())
+                <li>
+                    <a href="?pageAll=${allCatches.getNumber() + 1}&sortAll=${sortAll}&dirAll=${dirAll}">
+                        Next »
+                    </a>
+                </li>
+            @else
+                <li class="disabled"><span>Next »</span></li>
+            @endif
+        </ul>
+    </nav>
+
 </body>
 </html>
