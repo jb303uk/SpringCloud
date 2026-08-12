@@ -9,3 +9,21 @@ group by species_id, useruuid
 order by useruuid
 
 SELECT count(id) No_Of_Pokemon, generation_id FROM POKEMON_SPECIES group by generation_id
+
+CALL CSVWRITE('/Users/jb303/git/SpringCloud/spring-cloud-game/src/main/resources/db/changelog/data/POKEMON_SPECIES_NAMES.csv', 'SELECT * FROM POKEMON_SPECIES_NAMES where LOCAL_LANGUAGE_ID=9');
+
+select
+ROWNUM() AS ID
+, 'normal' as IDENTIFIER
+, ID as SPECIES_ID
+, FALSE as IS_SHINY
+, 'data/sprites/normal' || ID || '.png' as BLOB
+from POKEMON_SPECIES
+union all
+select
+ROWNUM() AS ID
+, 'normal' as IDENTIFIER
+, ID as SPECIES_ID
+, TRUE as IS_SHINY
+, 'data/sprites/shiny' || ID || '.png' as BLOB
+from POKEMON_SPECIES

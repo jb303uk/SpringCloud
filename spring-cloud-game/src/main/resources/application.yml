@@ -29,6 +29,9 @@ eureka:
   instance:
     hostname: ${HOSTNAME}.columbus.local
     instanceId: "@project.artifactId@:${random.int[1,9]}"
+gg:
+  jte:
+    use-precompiled-templates: true
 app:
   page-title: "Useful Developer Resources"
   links:
