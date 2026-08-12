@@ -7,3 +7,5 @@ FROM CATCHES
 // where useruuid = '173d0fbb-0993-4bff-b97e-4c7a5aeaf33b' 
 group by species_id, useruuid
 order by useruuid
+
+SELECT count(id) No_Of_Pokemon, generation_id FROM POKEMON_SPECIES group by generation_id
