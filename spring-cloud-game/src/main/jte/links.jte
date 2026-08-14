@@ -1,5 +1,5 @@
 @import java.util.List
-@import uk.gov.hmrc.entity.LinkItem
+@import uk.co.jb303.entity.LinkItem
 
 @param String pageTitle
 @param List<LinkItem> links

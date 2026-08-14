@@ -1,9 +1,9 @@
-@import uk.gov.hmrc.entity.Catches
+@import uk.co.jb303.entity.Catches
 @import java.util.List
 @import org.springframework.data.domain.Page
-@import uk.gov.hmrc.entity.CatchSummary
+@import uk.co.jb303.entity.CatchSummary
 
-@param uk.gov.hmrc.entity.Catches Catches
+@param uk.co.jb303.entity.Catches Catches
 @param String success = null
 @param String USERUUID
 
