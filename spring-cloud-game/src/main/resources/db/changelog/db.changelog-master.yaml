@@ -276,6 +276,28 @@ databaseChangeLog:
           and b.SPECIES_ID = c.SPECIES_ID
           and b.IS_SHINY = c.IS_SHINY
         viewName: CATCHES_VIEW
+    - createView:
+        fullDefinition: true
+        selectQuery: |-
+          CREATE VIEW BLOBS_VIEW AS
+          select 
+          ROWNUM() AS ID, u.*
+          from (
+          select
+          'normal' as IDENTIFIER
+          , ID as SPECIES_ID
+          , FALSE as IS_SHINY
+          , 'data/sprites/normal/' || ID || '.png' as BLOB
+          from POKEMON_SPECIES
+          union all
+          select
+          'shiny' as IDENTIFIER
+          , ID as SPECIES_ID
+          , TRUE as IS_SHINY
+          , 'data/sprites/shiny/' || ID || '.png' as BLOB
+          from POKEMON_SPECIES
+          ) u
+        viewName: BLOBS_VIEW
 - changeSet:
     id: 30
     author: generateChangeLog (generated)
