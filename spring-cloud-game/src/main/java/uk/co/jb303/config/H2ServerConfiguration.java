@@ -1,4 +1,4 @@
-package uk.gov.hmrc.config;
+package uk.co.jb303.config;
 
 import org.h2.tools.Server;
 import org.springframework.context.annotation.Bean;

@@ -1,20 +1,20 @@
-package uk.gov.hmrc;
+package uk.co.jb303;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import uk.gov.hmrc.config.LinksConfig;
+import uk.co.jb303.config.LinksConfig;
 
 
 @Configuration
 @EnableConfigurationProperties(LinksConfig.class)
 
 @SpringBootApplication
-public class Application {
+public class PokeCatcherWebApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(PokeCatcherWebApp.class, args);
     }
 }

@@ -1,8 +1,4 @@
-package uk.gov.hmrc.controller;
-
-import uk.gov.hmrc.entity.Catches;
-import uk.gov.hmrc.repository.CatchView;
-import uk.gov.hmrc.repository.CatchRepository;
+package uk.co.jb303.controller;
 
 import java.util.UUID;
 
@@ -20,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import uk.co.jb303.entity.Catches;
+import uk.co.jb303.repository.CatchRepository;
+import uk.co.jb303.repository.CatchView;
 
 @Controller
 @RequestMapping("/")

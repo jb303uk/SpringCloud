@@ -1,10 +1,10 @@
-package uk.gov.hmrc.controller;
+package uk.co.jb303.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import uk.gov.hmrc.config.LinksConfig;
+import uk.co.jb303.config.LinksConfig;
 
 @Controller
 public class LinksController {

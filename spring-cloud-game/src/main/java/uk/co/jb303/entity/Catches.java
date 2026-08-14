@@ -1,4 +1,4 @@
-package uk.gov.hmrc.entity;
+package uk.co.jb303.entity;
 
 import java.util.concurrent.ThreadLocalRandom;
 
