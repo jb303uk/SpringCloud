@@ -23,8 +23,8 @@ public class CatchSummary {
 	private Integer ivsPercent;
 	private String shinyIcon;
 	private String userUUID;
-    @Lob
-    private byte[] blob;
+//    @Lob
+//    private byte[] blob;
     
 	public String getPokemonName() { return pokemonName; }
     public Integer getCatchId() { return catchId; }
@@ -37,13 +37,13 @@ public class CatchSummary {
     public String getShinyIcon() { return shinyIcon; }
     public String getuserUUID() { return userUUID; }
     
-    @Transient
-    public String getImageBase64() {
-        if (this.blob == null || this.blob.length == 0) {
-            return null;
-        }
-        String base64Data = Base64.getEncoder().encodeToString(this.blob);
-        return "data:image/png;base64," + base64Data;
-    }
+//    @Transient
+//    public String getImageBase64() {
+//        if (this.blob == null || this.blob.length == 0) {
+//            return null;
+//        }
+//        String base64Data = Base64.getEncoder().encodeToString(this.blob);
+//        return "data:image/png;base64," + base64Data;
+//    }
     
 }

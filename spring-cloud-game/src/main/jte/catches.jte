@@ -57,7 +57,7 @@
         <tbody>
             @for(CatchSummary emp : allCatches.getContent())
                 <tr>
-                    <td><img src="${emp.getImageBase64()}" alt="Pokemon Image" />${emp.getShinyIcon()}</td>
+                    <td>${emp.getShinyIcon()}</td>
                     <td>${emp.getCatchId()}</td>
                     <td>${emp.getSpeciesId()}</td>
                     <td>${emp.getPokemonName()}</td>

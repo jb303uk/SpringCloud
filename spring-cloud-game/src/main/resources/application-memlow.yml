@@ -9,10 +9,12 @@ spring:
         web-allow-others: true
   datasource:
     hikari:
-      maximum-pool-size: 2       # The Pi only has 4 cores; high concurrency isn't possible
-      minimum-idle: 1
-      idle-timeout: 15000        # Drop connections fast
-      max-lifetime: 300000
+      maximum-pool-size: 4       # The Pi only has 4 cores; high concurrency isn't possible
+      minimum-idle: 2
+      idle-timeout: 300000        # Drop connections fast
+      max-lifetime: 600000
+  jmx:
+    enabled: false
   main:
     banner-mode: "off"
     lazy-initialization: true   # Keeps unused Beans out of RAM completely
@@ -25,7 +27,9 @@ server:
     threads:
       max: 6                       # Default can scale into dozens; cap strictly for 512MB RAM
       min: 2                       # Minimum worker threads
-      idle-timeout: 10000          # Kill idle worker threads after 10 seconds
+      idle-timeout: 15000ms          # Kill idle worker threads after 10 seconds
       max-queue-capacity: 10       # Stop backing up large queues in RAM
+      acceptors: 1
+      selectors: 2
   compression:
     enabled: false

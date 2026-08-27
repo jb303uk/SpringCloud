@@ -268,13 +268,10 @@ databaseChangeLog:
           ,n.NAME POKEMON_NAME, n.GENUS
           ,(c.IVS_ATTACK + c.IVS_DEFENSE + c.IVS_STAMINA) * 100 / 45 as IVS_PERCENT,
           c.IVS_ATTACK, c.IVS_DEFENSE, c.IVS_STAMINA
-          ,RAWTOHEX(HASH('MD5', b.BLOB)) BLOB_MD5, b.BLOB
-          FROM CATCHES c, POKEMON_SPECIES_NAMES n, BLOB b
+          FROM CATCHES c, POKEMON_SPECIES_NAMES n
           where 
           c.SPECIES_ID = n.POKEMON_SPECIES_ID
           and n.LOCAL_LANGUAGE_ID = 9
-          and b.SPECIES_ID = c.SPECIES_ID
-          and b.IS_SHINY = c.IS_SHINY
         viewName: CATCHES_VIEW
     - createView:
         fullDefinition: true
