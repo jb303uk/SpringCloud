@@ -2,6 +2,9 @@
 server:
   port: 8080
 spring:
+  jpa:
+    properties:
+      hibernate.format_sql: true
   application:
     name: "@project.artifactId@"
   datasource:
@@ -45,3 +48,6 @@ app:
       url: "/h2-console"
     - name: "Catch View"
       url: "/catchview"
+logging:
+  level:
+    "org.hibernate.SQL": "DEBUG"
