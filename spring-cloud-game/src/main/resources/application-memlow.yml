@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    hikari:
+      maximum-pool-size: 2       # The Pi only has 4 cores; high concurrency isn't possible
+      minimum-idle: 1
+      idle-timeout: 15000        # Drop connections fast
+      max-lifetime: 300000
+  main:
+    banner-mode: "off"
+    lazy-initialization: true   # Keeps unused Beans out of RAM completely
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: lazy     # Delays JPA load until absolute first use
+server:
+  jetty:
+    threads:
+      max: 6                       # Default can scale into dozens; cap strictly for 512MB RAM
+      min: 2                       # Minimum worker threads
+      idle-timeout: 10000          # Kill idle worker threads after 10 seconds
+      max-queue-capacity: 10       # Stop backing up large queues in RAM
+  compression:
+    enabled: false
