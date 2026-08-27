@@ -1,6 +1,6 @@
 @import uk.co.jb303.entity.Catches
 @import java.util.List
-@import org.springframework.data.domain.Page
+@import org.springframework.data.domain.Window
 @import uk.co.jb303.entity.CatchSummary
 
 @param uk.co.jb303.entity.Catches Catches
@@ -8,7 +8,7 @@
 @param String USERUUID
 
 @param List<Catches> catches
-@param Page<CatchSummary> allCatches
+@param Window<CatchSummary> allCatches
 @param String sortAll
 @param String dirAll
 
@@ -25,7 +25,7 @@
     .form-group { margin-bottom: 15px; }
     label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
     input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-    button { width: 100%; padding: 20px; background-color: #005a9c; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+    button { width: 100%; padding: 1px; background-color: #005a9c; color: white; border: none; border-radius: 4px; font-size: 40px; cursor: pointer; }
     button:hover { background-color: #004477; }
     .alert { padding: 12px; background-color: #d4edda; color: #155724; border-radius: 4px; margin-bottom: 15px; }
     table { width: 100%; border-collapse: collapse; margin-top: 15px; }
@@ -69,21 +69,12 @@
 
     <nav>
         <ul class="pagination">
-            @if(allCatches.hasPrevious())
                 <li>
-                    <a href="?pageAll=${allCatches.getNumber() - 1}&sortAll=${sortAll}&dirAll=${dirAll}">« Previous</a>
+                    <a href="?pageAll=0&sortAll=${sortAll}&dirAll=${dirAll}">« Previous</a>
                 </li>
-            @else
-                <li class="disabled"><span>« Previous</span></li>
-            @endif
-            <li><span>Page ${allCatches.getNumber()} of ${allCatches.getTotalPages()}</span></li>
-            @if(allCatches.hasNext())
                 <li>
-                    <a href="?pageAll=${allCatches.getNumber() + 1}&sortAll=${sortAll}&dirAll=${dirAll}">Next »</a>
+                    <a href="?pageAll=99999&sortAll=${sortAll}&dirAll=${dirAll}">Next »</a>
                 </li>
-            @else
-                <li class="disabled"><span>Next »</span></li>
-            @endif
         </ul>
     </nav>
 </body>
