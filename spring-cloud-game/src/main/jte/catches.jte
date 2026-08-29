@@ -11,6 +11,9 @@
 @param Window<CatchSummary> allCatches
 @param String sortAll
 @param String dirAll
+@param int sizeAll
+@param Boolean hasNext
+@param Long nextLastCatchId
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,11 +73,13 @@
     <nav>
         <ul class="pagination">
                 <li>
-                    <a href="?pageAll=0&sortAll=${sortAll}&dirAll=${dirAll}">« Previous</a>
+                    <a href="?sizeAll=${sizeAll}&sortAll=${sortAll}&dirAll=${dirAll}">« Previous</a>
                 </li>
+                @if(hasNext && nextLastCatchId != null)
                 <li>
-                    <a href="?pageAll=99999&sortAll=${sortAll}&dirAll=${dirAll}">Next »</a>
+                    <a href="?lastCatchId=${nextLastCatchId}&sizeAll=${sizeAll}&sortAll=${sortAll}&dirAll=${dirAll}">Next »</a>
                 </li>
+                @endif
         </ul>
     </nav>
 </body>
