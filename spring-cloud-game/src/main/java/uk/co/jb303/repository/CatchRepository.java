@@ -9,7 +9,6 @@ import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "catches", path = "catches")
 public interface CatchRepository extends JpaRepository<Catches, Integer> {
-	//List<Catches> findAllByOrderByEmployeeIdDesc();
 }
 
 

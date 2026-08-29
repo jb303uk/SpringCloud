@@ -260,7 +260,7 @@ databaseChangeLog:
           CREATE VIEW CATCHES_VIEW AS
           SELECT 
           c.catch_id, c.species_id
-          ,c.is_shiny ,c.userUUID
+          ,c.is_shiny, c.userUUID
           ,CASE 
           WHEN c.is_shiny = TRUE THEN '✨'
           ELSE null

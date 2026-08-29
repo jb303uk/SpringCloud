@@ -50,4 +50,4 @@ app:
       url: "/catchview"
 logging:
   level:
-    "org.hibernate.SQL": "DEBUG"
+    "org.hibernate.SQL": "INFO"
