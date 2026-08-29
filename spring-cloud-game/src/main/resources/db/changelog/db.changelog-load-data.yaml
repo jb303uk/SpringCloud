@@ -136,32 +136,32 @@ databaseChangeLog:
             tableName: POKEMON_SPECIES_NAMES
             usePreparedStatements: true
             primaryKey: POKEMON_SPECIES_ID,LOCAL_LANGUAGE_ID
-  - changeSet:
-      id: loadData-BLOB
-      author: James Beardsley
-      changes:
-        - loadData:
-            columns:
-              - column:
-                  name: ID
-                  type: NUMBER
-              - column:
-                  name: IDENTIFIER
-                  type: VARCHAR2(50)
-              - column:
-                  name: SPECIES_ID
-                  type: NUMBER
-              - column:
-                  name: IS_SHINY
-                  type: BOOLEAN                  
-              - column:
-                  name: BLOB
-                  type: BLOB
-            commentLineStartsWith: //
-            file: data/BLOB.csv
-            quotchar: '"'
-            relativeToChangelogFile: true
-            separator: ","
-            tableName: BLOB
-            usePreparedStatements: true
-            primaryKey: ID
+#  - changeSet:
+#      id: loadData-BLOB
+#      author: James Beardsley
+#      changes:
+#        - loadData:
+#            columns:
+#              - column:
+#                  name: ID
+#                  type: NUMBER
+#              - column:
+#                  name: IDENTIFIER
+#                  type: VARCHAR2(50)
+#              - column:
+#                  name: SPECIES_ID
+#                  type: NUMBER
+#              - column:
+#                  name: IS_SHINY
+#                  type: BOOLEAN                  
+#              - column:
+#                  name: BLOB
+#                  type: BLOB
+#            commentLineStartsWith: //
+#            file: data/BLOB.csv
+#            quotchar: '"'
+#            relativeToChangelogFile: true
+#            separator: ","
+#            tableName: BLOB
+#            usePreparedStatements: true
+#            primaryKey: ID

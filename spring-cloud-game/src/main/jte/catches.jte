@@ -59,16 +59,16 @@
             </tr>
         </thead>
         <tbody>
-            @for(CatchSummary emp : allCatches.getContent())
+            @for(CatchSummary catchRecord : allCatches.getContent())
                 <tr>
                     <td><img class="sprite" 
-                         src="${SpriteService.getSpriteDataUri(emp.getSpeciesId(), emp.getIsShiny())}" 
-                         alt="${emp.getPokemonName()}" 
-                         loading="lazy" />${emp.getShinyIcon()}</td>
-                    <td>${emp.getCatchId()}</td>
-                    <td>${emp.getSpeciesId()}</td>
-                    <td>${emp.getPokemonName()}</td>
-                    <td>${emp.getIVsPercent()}</td>
+                         src="${SpriteService.getSpriteDataUri(catchRecord.getSpeciesId(), catchRecord.getIsShiny())}" 
+                         alt="${catchRecord.getPokemonName()}" 
+                         loading="lazy" />${catchRecord.getShinyIcon()}</td>
+                    <td>${catchRecord.getCatchId()}</td>
+                    <td>${catchRecord.getSpeciesId()}</td>
+                    <td>${catchRecord.getPokemonName()}</td>
+                    <td>${catchRecord.getIVsPercent()}</td>
                 </tr>
             @endfor
         </tbody>
