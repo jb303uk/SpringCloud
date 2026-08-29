@@ -2,6 +2,7 @@
 @import java.util.List
 @import org.springframework.data.domain.Window
 @import uk.co.jb303.entity.CatchSummary
+@import uk.co.jb303.service.SpriteService
 
 @param uk.co.jb303.entity.Catches Catches
 @param String success = null
@@ -60,7 +61,10 @@
         <tbody>
             @for(CatchSummary emp : allCatches.getContent())
                 <tr>
-                    <td>${emp.getShinyIcon()}</td>
+                    <td><img class="sprite" 
+                         src="${SpriteService.getSpriteDataUri(emp.getSpeciesId(), emp.getIsShiny())}" 
+                         alt="${emp.getPokemonName()}" 
+                         loading="lazy" />${emp.getShinyIcon()}</td>
                     <td>${emp.getCatchId()}</td>
                     <td>${emp.getSpeciesId()}</td>
                     <td>${emp.getPokemonName()}</td>
