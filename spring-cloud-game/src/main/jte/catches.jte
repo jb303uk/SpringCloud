@@ -1,14 +1,10 @@
-@import uk.co.jb303.entity.Catches
-@import java.util.List
 @import org.springframework.data.domain.Window
 @import uk.co.jb303.entity.CatchSummary
 @import uk.co.jb303.service.SpriteService
 
 @param uk.co.jb303.entity.Catches Catches
-@param String success = null
 @param String USERUUID
 
-@param List<Catches> catches
 @param Window<CatchSummary> allCatches
 @param String sortAll
 @param String dirAll
@@ -47,6 +43,7 @@
                 <th><a href="?sortAll=catchId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Count</a></th>
                 <th><a href="?sortAll=speciesId&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">#</a></th>
                 <th><a href="?sortAll=pokemonName&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Name</a></th>
+                <th><a href="?sortAll=pokemonGen&dirAll=${dirAll.equals("asc") ? "desc" : "asc"}">Gen</a></th>
                 <th><a href="?sortAll=ivsPercent&dirAll=${dirAll.equals("asc") ? "asc" : "desc"}">IVs %</a></th>
             </tr>
         </thead>
@@ -60,6 +57,7 @@
                     <td>${catchRecord.getCatchId()}</td>
                     <td>${catchRecord.getSpeciesId()}</td>
                     <td>${catchRecord.getPokemonName()}</td>
+                    <td>${catchRecord.getPokemonGen()}</td>
                     <td>${catchRecord.getIVsPercent()}</td>
                 </tr>
             @endfor

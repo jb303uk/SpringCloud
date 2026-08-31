@@ -15,6 +15,7 @@ public class CatchSummary {
     private Integer catchId; // Must map to a column with unique values in your view
     
     private String pokemonName;
+    private String pokemonGen;
 	private Integer speciesId;
 	private Boolean isShiny;
 	private Integer ivsAttack;
@@ -25,6 +26,7 @@ public class CatchSummary {
 	private String userUUID;
     
 	public String getPokemonName() { return pokemonName; }
+	public String getPokemonGen() { return pokemonGen; }
     public Integer getCatchId() { return catchId; }
     public Integer getSpeciesId() { return speciesId; }
     public Boolean getIsShiny() { return isShiny; }
