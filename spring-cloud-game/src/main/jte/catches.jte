@@ -25,20 +25,12 @@
     <title>🥚</title>
     <style>
     body { font-family: Arial, sans-serif; margin: 10px; background-color: #f4f4f9; }
-    .container { max-width: 500px; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .form-group { margin-bottom: 15px; }
-    label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
     input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
     button { width: 100%; padding: 1px; background-color: #005a9c; color: white; border: none; border-radius: 4px; font-size: 40px; cursor: pointer; }
-    button:hover { background-color: #004477; }
-    .alert { padding: 12px; background-color: #d4edda; color: #155724; border-radius: 4px; margin-bottom: 15px; }
     table { width: 100%; border-collapse: collapse; margin-top: 15px; }
     th, td { border: 1px solid #cccccc; padding: 5px; }
-    th { background-color: #eaeff2; color: #333333; }
     tr:nth-child(even) { background-color: #f9f9f9; }
-    .no-data { text-align: center; color: #777777; font-style: italic; padding: 20px; }
     .pagination { display: flex; gap: 10px; list-style: none; }
-    .disabled { color: #ccc; pointer-events: none; }
     </style>
 </head>
 <body>
@@ -73,7 +65,6 @@
             @endfor
         </tbody>
     </table>
-
     <nav>
         <ul class="pagination">
                 <li>
