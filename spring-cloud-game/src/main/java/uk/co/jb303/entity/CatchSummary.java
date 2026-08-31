@@ -1,9 +1,6 @@
 package uk.co.jb303.entity;
 
 import jakarta.persistence.*;
-
-import java.util.Base64;
-
 import org.hibernate.annotations.Immutable;
 
 @Entity

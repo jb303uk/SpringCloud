@@ -296,6 +296,44 @@ databaseChangeLog:
           from POKEMON_SPECIES
           ) u
         viewName: BLOBS_VIEW
+    - createView:
+        fullDefinition: true
+        selectQuery: |-
+            CREATE VIEW PROGRESS AS
+            select
+            useruuid
+            ,gen1 as c1,gen2 as c2,gen3 as c3,gen4 as c4, gen5 as c5,gen6 as c6,gen7 as c7,gen8 as c8, gen9 as c9
+            ,count(case when GEN1 = 151 then true end) as G1
+            ,count(case when GEN2 = 151 then true end) as G2
+            ,count(case when GEN3 = 151 then true end) as G3
+            ,count(case when GEN4 = 151 then true end) as G4
+            ,count(case when GEN5 = 151 then true end) as G5
+            ,count(case when GEN6 = 151 then true end) as G6
+            ,count(case when GEN7 = 151 then true end) as G7
+            ,count(case when GEN8 = 151 then true end) as G8
+            ,count(case when GEN9 = 151 then true end) as G9
+            from
+            (
+            SELECT
+            useruuid
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=1) GEN1
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=2) GEN2
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=3) GEN3
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=4) GEN4
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=5) GEN5
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=6) GEN6
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=7) GEN7
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=8) GEN8
+            ,count(DISTINCT species_id) FILTER (where GENERATION_ID=9) GEN9
+            ,generation_id
+            FROM CATCHES
+            RIGHT OUTER JOIN POKEMON_SPECIES
+            on species_id = id
+            where useruuid is not null
+            group by useruuid, generation_id
+            ) as totals
+            group by useruuid, generation_id
+        viewName: PROGRESS
 - changeSet:
     id: 30
     author: generateChangeLog (generated)

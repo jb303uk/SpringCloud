@@ -12,3 +12,47 @@ SELECT count(id) No_Of_Pokemon, generation_id FROM POKEMON_SPECIES group by gene
 
 CALL CSVWRITE('src/main/resources/db/changelog/data/POKEMON_SPECIES_NAMES.csv', 'SELECT * FROM POKEMON_SPECIES_NAMES where LOCAL_LANGUAGE_ID=9');
 CALL CSVWRITE('src/main/resources/db/changelog/data/BLOB.csv', 'SELECT * FROM BLOBS_VIEW');
+
+SELECT useruuid, count(DISTINCT species_id) species_count, generation_id
+FROM CATCHES
+RIGHT OUTER JOIN POKEMON_SPECIES
+on species_id = id
+where useruuid is not null
+group by useruuid, generation_id
+
+
+
+select
+useruuid
+,GEN1,GEN2,GEN3,GEN4,GEN5,GEN6,GEN7,GEN8,GEN9
+,count(case when GEN1 = 151 then true end) as GEN1_COMPLETE
+,count(case when GEN2 = 151 then true end) as GEN2_COMPLETE
+,count(case when GEN3 = 151 then true end) as GEN3_COMPLETE
+,count(case when GEN4 = 151 then true end) as GEN4_COMPLETE
+,count(case when GEN5 = 151 then true end) as GEN5_COMPLETE
+,count(case when GEN6 = 151 then true end) as GEN6_COMPLETE
+,count(case when GEN7 = 151 then true end) as GEN7_COMPLETE
+,count(case when GEN8 = 151 then true end) as GEN8_COMPLETE
+,count(case when GEN9 = 151 then true end) as GEN9_COMPLETE
+from
+(
+SELECT
+useruuid
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=1) GEN1
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=2) GEN2
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=3) GEN3
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=4) GEN4
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=5) GEN5
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=6) GEN6
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=7) GEN7
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=8) GEN8
+,count(DISTINCT species_id) FILTER (where GENERATION_ID=9) GEN9
+,generation_id
+FROM CATCHES
+RIGHT OUTER JOIN POKEMON_SPECIES
+on species_id = id
+where useruuid is not null
+group by useruuid, generation_id
+) as totals
+group by useruuid, generation_id
+
