@@ -2,6 +2,11 @@
 server:
   port: 8080
 spring:
+  h2:
+    console:
+      enabled: false
+      settings:
+        web-allow-others: false  
   jpa:
     properties:
       hibernate.format_sql: true
@@ -21,13 +26,11 @@ spring:
     discovery:
       enabled: false
     config:
+      enabled: false
       failFast: false
       discovery:
         service-id: spring-cloud-crud
-        enabled: false
-  data:
-    rest:
-      base-path: /api
+        enabled: false        
 eureka:
   instance:
     hostname: ${HOSTNAME}.columbus.local
