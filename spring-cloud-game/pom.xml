@@ -8,7 +8,7 @@
   </parent>
   <groupId>uk.gov.hmrc</groupId>
   <artifactId>spring-cloud-game</artifactId>
-  <version>0.10.0-SNAPSHOT</version>
+  <version>0.11.0-SNAPSHOT</version>
   <name>spring-cloud-game</name>
   <url>http://maven.apache.org</url>
   <dependencies>
