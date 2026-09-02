@@ -9,6 +9,7 @@ import org.springframework.data.domain.Limit;
 import org.springframework.data.domain.ScrollPosition;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Window;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -107,7 +108,7 @@ public class CatchWebController {
     }
 
     @PostMapping("/")
-    public String insertCatches(@ModelAttribute Catches catches) {
+    public String insertCatches(@ModelAttribute Catches catches, @AuthenticationPrincipal String validatedUuid) {
         catchRepository.save(catches);
         return "redirect:/";
     }
