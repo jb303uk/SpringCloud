@@ -21,6 +21,7 @@
     <module>spring-cloud-crud</module>
     <module>spring-cloud-rest</module>
     <module>spring-cloud-function</module>
+    <module>spring-web-standalone</module>
   </modules>
   <groupId>uk.gov.hmrc</groupId>
   <artifactId>spring-cloud-parent</artifactId>
