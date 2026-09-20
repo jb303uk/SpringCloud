@@ -1,0 +1,14 @@
+server:
+  port: 8443
+  ssl:
+    bundle: "jb303-co-uk"
+
+spring:
+  ssl:
+    bundle:
+      pem:
+        jb303-co-uk:
+          reload-on-update: true   # 👈 Enables the hot reload background file watcher
+          keystore:
+            certificate: "file:src/main/resources/ssl/jb303-co-uk.crt"
+            private-key: "file:src/main/resources/ssl/jb303-co-uk.key"
