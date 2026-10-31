@@ -1,0 +1,17 @@
+<assembly xmlns="http://apache.org"
+          xmlns:xsi="http://w3.org"
+          xsi:schemaLocation="http://apache.org http://apache.org">
+    <id>lambda-layer</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <dependencySets>
+        <dependencySet>
+            <!-- Maps all runtime dependencies inside the folder path required by AWS Lambda -->
+            <outputDirectory>java/lib</outputDirectory>
+            <useProjectArtifact>false</useProjectArtifact> <!-- Excludes your main project JAR -->
+            <scope>runtime</scope> <!-- Includes compile and runtime dependencies -->
+        </dependencySet>
+    </dependencySets>
+</assembly>

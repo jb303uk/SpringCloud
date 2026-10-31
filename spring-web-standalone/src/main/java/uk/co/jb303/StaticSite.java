@@ -1,13 +1,13 @@
-package uk.co.jb303.spring_web_standalone;
+package uk.co.jb303;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringWebStandaloneApplication {
+public class StaticSite {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringWebStandaloneApplication.class, args);
+		SpringApplication.run(StaticSite.class, args);
 	}
 
 }
